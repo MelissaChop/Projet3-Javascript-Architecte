@@ -30,6 +30,8 @@ nameElement.innerText = categories.name;
 		
 divFilter.appendChild(buttonElement);
 buttonElement.appendChild (nameElement);
+
+console.log(divFilter);
   }
 
 
@@ -65,6 +67,8 @@ divGallery.appendChild(worksElement)
 
   worksElement.appendChild(imageElement);
   worksElement.appendChild(nameElement);
+
+  console.log(divGallery);
 }
 
 //const reponse = await fetch ("http://localhost:5678/api/works"){
