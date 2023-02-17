@@ -1,17 +1,13 @@
 // Debut du code JS //
 // Appel de l' API 
 
-fetch('http://localhost:5678/api/users/login', {
-  headers: {
-    "accept": "autorisation",
-	"content-type": "application/json" 
-  }
-  data{
-    "email": "sophie.bluel@test.tld",
-   "password": "S0phie"
-  }
-  
+fetch('http://localhost:5678/api/users/login')
+.then(function() {
+
 })
+.catch(function() {
+
+});
 
 
   // Creation boutons // 
