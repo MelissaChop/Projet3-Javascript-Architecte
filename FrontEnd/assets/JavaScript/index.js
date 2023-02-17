@@ -1,16 +1,10 @@
 // Debut du code JS //
-const filterSection = document.querySelector(".filter");
-
 // Appel de l' API 
-
-fetch('http://localhost:5678/api/users/login')
-.then(function(response) {
-  return response.json();
-})
-.then(function(data) {
-  console.log(data);
-});
-
+const reponse = await fetch("http://localhost:5678/api/");
+	api = await reponse.json();
+	const sectionSite = JSON.stringify(api);
+	// Stockage des informations dans le localStorage
+	window.localStorage.setItem("sections", sectionSite);
 
   // Creation boutons // 
 
