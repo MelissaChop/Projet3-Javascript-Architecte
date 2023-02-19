@@ -76,17 +76,63 @@
 //const lienApi = fetch('http://localhost:5678/api/users/login')
 //console.log (lienApi)
 
+//const worksApi =  'http://localhost:5678/api/works';
 
-document.querySelector('.gallery')
+//    fetch(worksApi).then(async(response)=>
+ //     response.json().then((data)=>
+ //     console.log(data))
+ //     );
 
-const urlPhoto = 'http://localhost:5678/api/works';
 
-      fetch(urlPhoto)
-      .then(response=>response.json()
-      .then(data=>console.log(data))
-      );
+ /* TENTATIVE DE FAIRE COMME LE COURS: NE FONCTIONNE PAS /
   
+/*fetch ("http://127.0.0.1:5500/FrontEnd/");
+
+async function fetchworks(){
+const worksApi = await fetch('http://localhost:5678/api/works');
+const photo = await worksApi.json();
 
 
+const works= photo[0];
+
+const imageUrl = document.createElement ("img");
+imageUrl.dataset = works.imageUrl;
+
+const title = document.createElement ("h3");
+title.dataset = works.title;
+
+const divGallery = document.querySelector(".gallery");
+divGallery.appendChild(imageUrl);
+divGallery.appendChild(title);
+
+}*/
+const worksContener = document.querySelector('.gallery');
+
+
+const worksApi = fetch(`http://localhost:5678/api/works`)
+ worksApi
+  .then(async(response)=>{
+    console.log(response);
+
+const works = await response.json();
+  console.log(works);
+});
+
+const photo = worksApi;
+
+const imgElement = document.createElement('img');
+  imgElement.src = worksApi.imageUrl;
+
+const nameElement = document.createElement('figcaption');
+  nameElement.innerText = worksApi.title;
+
+
+// Rattacher a l'element parent
+
+worksContener.appendChild(imgElement);
+worksContener.appendChild(nameElement);
+
+for(let i=0; i<worksApi.length; i++ );
+console.log(worksApi);
 
 
