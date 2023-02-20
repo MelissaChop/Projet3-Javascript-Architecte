@@ -1,5 +1,8 @@
 
                   /* Appel API Works*/
+
+/* Creer fonction Portfolio*/
+async function displayWorks() {            
 const worksApi = await fetch('http://localhost:5678/api/works')
 //console.log(worksApi);
 
@@ -42,13 +45,18 @@ for (let i=0;i < works.length; i++) {
   divGallery.appendChild(worksElement);
     //console.log(divGallery);
 }
-
+}
+displayWorks();
+//console.log(displayWorks);
 
 
 
 
 
                       /* CREATION BOUTONS*/
+
+/* Creer fonction Bouton*/
+async function displayCategories() {       
  const categoriesApi= await fetch(`http://localhost:5678/api/categories`)
  //console.log(categoriesApi);
 
@@ -80,13 +88,45 @@ for (let i=0;i < categories.length; i++) {
   buttonCategories.innerText = categories[i].name;
   buttonCategories.classList.add("choice_pictures"); /*Ajout class*/
   buttonCategories.dataset.id = categories[i].id;
+
   //console.log(buttonCategories);
 
-  /* Lien entre les blocs enfant et parent*/
 
-  divCategories.appendChild(buttonCategories);
-  //console.log(divCategories);
+    /* Lien entre les blocs enfant et parent*/
+
+    divCategories.appendChild(buttonCategories);
+    //console.log(divCategories);
+
+
 }
+}
+
+/*Appel de la fonction pour affichage*/
+displayCategories();
+
+
+// CREATION BOUTONS ACTIF // 
+
+/*let action = document.getElementById("filter");
+//console.log(action);
+action.addEventListener("click", (event) => {/* Renvoi element Action*/
+//console.log(event.target.textContent);
+/*}) */
+
+/*const boutonFiltre = document.querySelector(".filter");
+boutonFiltre.addEventListener("click", function() {
+
+
+});*/
+  
+
+
+
+
+  
+  
+
+
 
 
 
@@ -96,10 +136,10 @@ for (let i=0;i < categories.length; i++) {
 
                   /*Filtre des works : Test */ 
 
-let action= document.getElementById("monBouton"); /*recupere bouton */
+/*let action= document.getElementById("monBouton"); /*recupere bouton */
 //console.log(action.textContent);
 
-action.addEventListener("click", (event) => {
+/*action.addEventListener("click", (event) => {
   //console.log(event.target.textContent);
 }) /* Renvoi element Action*/
 
