@@ -1,138 +1,78 @@
-// Debut du code JS //
-
-// Appel de l' API 
-//const lienApi = await fetch("http://localhost:5678/api/");
-//console.log(lienApi)
-//api = await lienApi.json();
-//const sectionSite = JSON.stringify(api);
 
 
-	// Stockage des informations dans le localStorage
-  //window.localStorage.setItem("sections", sectionSite);
 
-                 // Creation boutons // 
-//  const categoryId = await fetch ('https://mon-api.com/categories');
-//  const button = await reponse.json;
-//  for (let i = 0; i < button.length; i++) {
-//  const categories = button[i];
-//  const divFilter = document.querySelector(".filter");
+ //TEST 
 
-  //boutonFiltre.addEventListener("click", function(){}) GARDER EN COMMENTAIRE 
+                  /* Appel API Works*/
+const worksApi = await fetch('http://localhost:5678/api/works')
+//console.log(worksApi);
 
-//const buttonElement = document.createElement("categories");
+ /*Mettre au format JSON */
+const works = await worksApi.json();
+//console.log(works);
 
-//const nameElement = document.createElement("button");
-//nameElement.innerText = categories.name;
-		
-//divFilter.appendChild(buttonElement);
-//buttonElement.appendChild (nameElement);
+/*Boucle dans le tableau JSON */
+for (let i=0;i < works.length; i++) {
+  //console.log(works[i].title + ', ' + works[i].imageUrl);
 
-//console.log(divFilter);  }
+  /*Choix de l'emplacement de la balise HTML*/
 
-// *GARDER EN COMMENTAIRE
-//const reponse = await fetch("http://localhost:5678/api/categories"){
-//	method: "POST",
-//	headers: {"content-type": "/api/categories"},
-//	body: {"Objets"}}
+const divGallery = document.querySelector (".gallery");
+//console.log(divGallery);
 
-// -> penser a boutondataset.categoryId cf API  et pour lire element.dataset
-//  Donc avec data-id
-
-//localStorage.setItems('id','valeur','cle') 
-
-//* //
-
-// Creation partie Gallery , recuperation des Works//
-
-              // recuperation des images
-//const reponse = await fetch ('http://localhost:5678/api/works')
-//const works = await reponse.json;
-
-//for (let i = 0; i < works.length; i++) {
-//  const photo = works[i];
-
-//  const divGallery = document.querySelector (".gallery");
+ /*Creation des balises HTML*/
   
-//  const worksElement = document.createElement("photo");
+const worksElement = document.createElement("figure");
+//console.log(worksElement);
 
-//  const imageElement = document.createElement("img");
-//  imageElement.src= photo.image;
-//  const nameElement = document.createElement ("figcaption");
-//  nameElement.innerText = photo.name;
-		
-//divGallery.appendChild(worksElement)
+const imageUrl = document.createElement("img");
+imageUrl.src= works[i].imageUrl;
+//console.log(imageUrl);
 
-//  worksElement.appendChild(imageElement);
-//  worksElement.appendChild(nameElement);
+const titleElement = document.createElement ("figcaption");
+titleElement.innerText = works[i].title;
+//console.log(titleElement);
 
-//  console.log(divGallery);
-//}
+/* Lien entre les blocs enfant et parent*/
 
-//const reponse = await fetch ("http://localhost:5678/api/works"){
-//  method: "POST",
-//	headers: {"content-type": "./api/works"},
-//	body: {"Objets"}}
+divGallery.appendChild(worksElement);
+//console.log(divGallery);
 
-//const lienApi = fetch('http://localhost:5678/api/users/login')
-//console.log (lienApi)
+worksElement.appendChild(imageUrl);
+console.log(worksElement);
 
-//const worksApi =  'http://localhost:5678/api/works';
-
-//    fetch(worksApi).then(async(response)=>
- //     response.json().then((data)=>
- //     console.log(data))
- //     );
+worksElement.appendChild(titleElement);
+}
 
 
- /* TENTATIVE DE FAIRE COMME LE COURS: NE FONCTIONNE PAS /
-  
-/*fetch ("http://127.0.0.1:5500/FrontEnd/");
+/* CREATION BOUTONS*/
+ const categoriesApi= await fetch(`http://localhost:5678/api/categories`)
+ //console.log(categoriesApi);
 
-async function fetchworks(){
-const worksApi = await fetch('http://localhost:5678/api/works');
-const photo = await worksApi.json();
+  /*Mettre au format JSON */
+ const categories = await categoriesApi.json();
+//console.log(categories);
 
+/*Boucle dans le tableau JSON */
+for (let i=0;i < categories.length; i++) {
+//console.log(categories[i].name);
 
-const works= photo[0];
+  /*Choix de l'emplacement de la balise HTML*/
 
-const imageUrl = document.createElement ("img");
-imageUrl.dataset = works.imageUrl;
+const divCategories = document.querySelector(".filter");
+//console.log(divCategories);
 
-const title = document.createElement ("h3");
-title.dataset = works.title;
+/*Creation des balises HTML*/
 
-const divGallery = document.querySelector(".gallery");
-divGallery.appendChild(imageUrl);
-divGallery.appendChild(title);
+const buttonCategories = document.createElement("button");
+buttonCategories.innerText = categories[i].name;
+//console.log(buttonCategories);
 
-}*/
-const worksContener = document.querySelector('.gallery');
+/* Lien entre les blocs enfant et parent*/
 
-
-const worksApi = fetch(`http://localhost:5678/api/works`)
- worksApi
-  .then(async(response)=>{
-    console.log(response);
-
-const works = await response.json();
-  console.log(works);
-});
-
-const photo = worksApi;
-
-const imgElement = document.createElement('img');
-  imgElement.src = worksApi.imageUrl;
-
-const nameElement = document.createElement('figcaption');
-  nameElement.innerText = worksApi.title;
+divCategories.appendChild(buttonCategories);
+console.log(divCategories)
 
 
-// Rattacher a l'element parent
-
-worksContener.appendChild(imgElement);
-worksContener.appendChild(nameElement);
-
-for(let i=0; i<worksApi.length; i++ );
-console.log(worksApi);
-
+}
 

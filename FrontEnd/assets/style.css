@@ -134,7 +134,7 @@ li:hover {
 	margin-top: 51px;
 } 
 
-.choice_pictures{
+button{
 	min-height: 37px;
 	max-width: 198px;
 	min-width: 100px;
@@ -149,7 +149,7 @@ li:hover {
 	font-weight: bold;
 }
 
-.choice_pictures:hover{
+button:hover{
 	background-color: #1D6154;
 	color: white;
 }
