@@ -1,8 +1,4 @@
 
-
-
- //TEST 
-
                   /* Appel API Works*/
 const worksApi = await fetch('http://localhost:5678/api/works')
 //console.log(worksApi);
@@ -13,39 +9,46 @@ const works = await worksApi.json();
 
 /*Boucle dans le tableau JSON */
 for (let i=0;i < works.length; i++) {
-  //console.log(works[i].title + ', ' + works[i].imageUrl);
+    //console.log(works[i].title + ', ' + works[i].imageUrl);
 
-  /*Choix de l'emplacement de la balise HTML*/
+    /*Choix de l'emplacement de la balise HTML*/
 
-const divGallery = document.querySelector (".gallery");
-//console.log(divGallery);
+  const divGallery = document.querySelector (".gallery");
+  //console.log(divGallery);
 
- /*Creation des balises HTML*/
-  
-const worksElement = document.createElement("figure");
-//console.log(worksElement);
+  /*Creation des balises HTML*/
+    
+  const worksElement = document.createElement("figure");
+  worksElement.dataset.id = works[i].id;
+  worksElement.dataset.categoryId = works[i].categoryId;
+  //console.log(worksElement);
 
-const imageUrl = document.createElement("img");
-imageUrl.src= works[i].imageUrl;
-//console.log(imageUrl);
+  const image = document.createElement("img");
+  image.src= works[i].imageUrl;
+  image.crossOrigin = 'anonymous';
+  image.alt= works[i].title;
+  //console.log(imageUrl);
 
-const titleElement = document.createElement ("figcaption");
-titleElement.innerText = works[i].title;
-//console.log(titleElement);
+  const titleElement = document.createElement ("figcaption");
+  titleElement.innerText = works[i].title;
+  //console.log(titleElement);
 
-/* Lien entre les blocs enfant et parent*/
+  /* Lien entre les blocs enfant et parent*/
+  worksElement.appendChild(image);
+  //console.log(worksElement);
 
-divGallery.appendChild(worksElement);
-//console.log(divGallery);
+  worksElement.appendChild(titleElement);
 
-worksElement.appendChild(imageUrl);
-console.log(worksElement);
-
-worksElement.appendChild(titleElement);
+  divGallery.appendChild(worksElement);
+    //console.log(divGallery);
 }
 
 
-/* CREATION BOUTONS*/
+
+
+
+
+                      /* CREATION BOUTONS*/
  const categoriesApi= await fetch(`http://localhost:5678/api/categories`)
  //console.log(categoriesApi);
 
@@ -53,26 +56,52 @@ worksElement.appendChild(titleElement);
  const categories = await categoriesApi.json();
 //console.log(categories);
 
+
+/* Creation new categorie */
+const all = {
+  id: 0,
+  name: "Tous",
+};
+
+categories.unshift(all); /*Rajouter au debut du tableau */
+
 /*Boucle dans le tableau JSON */
 for (let i=0;i < categories.length; i++) {
-//console.log(categories[i].name);
+  //console.log(categories[i].name);
 
-  /*Choix de l'emplacement de la balise HTML*/
+    /*Choix de l'emplacement de la balise HTML*/
 
-const divCategories = document.querySelector(".filter");
-//console.log(divCategories);
+  const divCategories = document.querySelector(".filter");
+  //console.log(divCategories);
 
-/*Creation des balises HTML*/
+  /*Creation des balises HTML*/
 
-const buttonCategories = document.createElement("button");
-buttonCategories.innerText = categories[i].name;
-//console.log(buttonCategories);
+  const buttonCategories = document.createElement("button");
+  buttonCategories.innerText = categories[i].name;
+  buttonCategories.classList.add("choice_pictures"); /*Ajout class*/
+  buttonCategories.dataset.id = categories[i].id;
+  //console.log(buttonCategories);
 
-/* Lien entre les blocs enfant et parent*/
+  /* Lien entre les blocs enfant et parent*/
 
-divCategories.appendChild(buttonCategories);
-console.log(divCategories)
-
-
+  divCategories.appendChild(buttonCategories);
+  //console.log(divCategories);
 }
+
+
+
+
+
+
+
+                  /*Filtre des works : Test */ 
+
+let action= document.getElementById("monBouton"); /*recupere bouton */
+//console.log(action.textContent);
+
+action.addEventListener("click", (event) => {
+  //console.log(event.target.textContent);
+}) /* Renvoi element Action*/
+
+
 
