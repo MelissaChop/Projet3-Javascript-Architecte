@@ -1,8 +1,8 @@
 
                   /* Appel API Works*/
 
-/* Creer fonction Portfolio*/
-async function displayWorks() {            
+
+          
 const worksApi = await fetch('http://localhost:5678/api/works')
 //console.log(worksApi);
 
@@ -10,17 +10,20 @@ const worksApi = await fetch('http://localhost:5678/api/works')
 const works = await worksApi.json();
 //console.log(works);
 
-/*Boucle dans le tableau JSON */
-for (let i=0;i < works.length; i++) {
-    //console.log(works[i].title + ', ' + works[i].imageUrl);
-
-    /*Choix de l'emplacement de la balise HTML*/
+  /*Choix de l'emplacement de la balise HTML*/
 
   const divGallery = document.querySelector (".gallery");
   //console.log(divGallery);
 
-  /*Creation des balises HTML*/
+  /* Creer fonction Portfolio*/
+  async function displayWorks() {  
     
+/*Boucle dans le tableau JSON */
+for (let i=0;i < works.length; i++) {
+    //console.log(works[i].title + ', ' + works[i].imageUrl);
+
+  /*Creation des balises HTML*/
+  
   const worksElement = document.createElement("figure");
   worksElement.dataset.id = works[i].id;
   worksElement.dataset.categoryId = works[i].categoryId;
@@ -44,10 +47,12 @@ for (let i=0;i < works.length; i++) {
 
   divGallery.appendChild(worksElement);
     //console.log(divGallery);
+
 }
 }
-displayWorks();
-//console.log(displayWorks);
+
+
+
 
 
 
@@ -56,13 +61,18 @@ displayWorks();
                       /* CREATION BOUTONS*/
 
 /* Creer fonction Bouton*/
-async function displayCategories() {       
+     
  const categoriesApi= await fetch(`http://localhost:5678/api/categories`)
  //console.log(categoriesApi);
 
   /*Mettre au format JSON */
  const categories = await categoriesApi.json();
 //console.log(categories);
+
+/*Choix de l'emplacement de la balise HTML*/
+
+const divCategories = document.querySelector(".filter");
+//console.log(divCategories);
 
 
 /* Creation new categorie */
@@ -73,14 +83,15 @@ const all = {
 
 categories.unshift(all); /*Rajouter au debut du tableau */
 
+
+/* Creer fonction Bouton*/
+
+async function displayCategories() {  
+
 /*Boucle dans le tableau JSON */
 for (let i=0;i < categories.length; i++) {
   //console.log(categories[i].name);
 
-    /*Choix de l'emplacement de la balise HTML*/
-
-  const divCategories = document.querySelector(".filter");
-  //console.log(divCategories);
 
   /*Creation des balises HTML*/
 
@@ -91,33 +102,51 @@ for (let i=0;i < categories.length; i++) {
 
   //console.log(buttonCategories);
 
-
     /* Lien entre les blocs enfant et parent*/
 
     divCategories.appendChild(buttonCategories);
     //console.log(divCategories);
 
+//FILTRE
+let action= document.getElementById("choice_pictures");
+//console.log(action);
+
+buttonCategories.addEventListener('click', () => {
+  const categoryId = parseInt(buttonCategories.dataset.id);
+  displayWorks(categoryId);
+ // console.log(categoryId)
+ for (let )
+});
 
 }
 }
 
-/*Appel de la fonction pour affichage*/
 displayCategories();
+//console.log(displayCategories);
+displayWorks();
+//console.log(displayWorks);
+
+
+
 
 
 // CREATION BOUTONS ACTIF // 
 
-/*let action = document.getElementById("filter");
+//let action = document.getElementById("filter");
 //console.log(action);
-action.addEventListener("click", (event) => {/* Renvoi element Action*/
+//action.addEventListener("click", (event) => {/* Renvoi element Action*/
 //console.log(event.target.textContent);
-/*}) */
-
-/*const boutonFiltre = document.querySelector(".filter");
-boutonFiltre.addEventListener("click", function() {
+//}) ;
 
 
-});*/
+
+//const boutonFiltre = document.querySelector(".filter");
+//boutonFiltre.addEventListener("click", function() {
+
+
+//})
+
+
   
 
 
