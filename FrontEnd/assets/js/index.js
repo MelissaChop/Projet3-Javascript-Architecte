@@ -3,15 +3,16 @@
 
 
           
+  /* Creer fonction Portfolio*/
+  async function displayWorks() {  
+
+
 const worksApi = await fetch('http://localhost:5678/api/works')
 //console.log(worksApi);
 
  /*Mettre au format JSON */
 const works = await worksApi.json();
 //console.log(works);
-
-  /* Creer fonction Portfolio*/
-  async function displayWorks() {  
 
   /*Choix de l'emplacement de la balise HTML*/
 
@@ -35,7 +36,7 @@ for (let i=0;i < works.length; i++) {
   image.src= works[i].imageUrl;
   image.crossOrigin = 'anonymous';
   image.alt= works[i].title;
-  //console.log(imageUrl);
+  //console.log(image);
 
   const titleElement = document.createElement ("figcaption");
   titleElement.innerText = works[i].title;
@@ -111,6 +112,22 @@ for (let i=0;i < categories.length; i++) {
     //console.log(divCategories);
 
 
+
+
+
+
+    let bouton = document.getElementById("filter"); /*recupere bouton */
+    //console.log(bouton);
+    const displayCategories = (buttonCategories) 
+    //console.log(buttonCategories);
+    //displayWorks = (works[i].categoryId)
+    //console.log(works[i].categoryId)
+
+    bouton.addEventListener("click", (buttonCategories) => {/* Renvoi element Action*/
+    //console.log(buttonCategories.target.textContent);
+
+    })
+
 }
 }
 
@@ -120,11 +137,44 @@ displayWorks();
 //console.log(displayWorks);
 
 
+//ENCORE UN TEST //
 
+
+
+/*async function updateWorks(categoryId) {
+const works = await getFilteredWorks(categoryId);
+const divGallery = document.querySelector(".gallery");
+divGallery.innerHTML = "";
+
+for (let i = 0; i < works.length; i++) {
+// création des éléments HTML pour chaque œuvre
+// ajout des éléments HTML à la galerie
+}
+}
+
+
+
+
+
+
+
+//TEST RATE
+
+/**async function filterBouton( displayCategories , displayWorks ) {  
+ // console.log(displayWorks);
+ let action = document.getElementById("choice_pictures");
+ //console.log(action)
+ action.addEventListener("click", () => {/* Renvoi element Action*/
+//console.log(action);
+/*buttonCategories(categories) = buttonCategories.filter(categories[i].id === works[i].categoryId );
+/*return (buttonCategories);
+**});
+//}
 
 
 // CREATION BOUTONS ACTIF // 
 
+// 1ER TEST//
 
 //FILTRE
 //let action= document.getElementById("choice_pictures");
@@ -133,8 +183,10 @@ displayWorks();
 //buttonCategories.addEventListener('click', () => {
 //  const  buttonFiltre = 
   
-
 //});
+
+//2ND TEST//
+
 
 //let action = document.getElementById("filter");
 //console.log(action);
@@ -175,6 +227,4 @@ displayWorks();
 /*action.addEventListener("click", (event) => {
   //console.log(event.target.textContent);
 }) /* Renvoi element Action*/
-
-
 
