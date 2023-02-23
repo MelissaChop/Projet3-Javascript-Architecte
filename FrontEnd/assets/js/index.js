@@ -54,7 +54,57 @@ for (let i=0;i < works.length; i++) {
     //console.log(divGallery);
 
 }
+
+
+
+
+fetch('http://localhost:5678/api/works')
+  .then(response => response.json())
+  .then(data => {
+   // Recuperez toute la gallery
+   data.forEach(function(works) {
+   // console.log(works);
+  });
+     // Récupérer tous les objets 
+     let worksObjets = data.filter(function(works) {
+      return works.categoryId === 1;
+    });
+    //console.log(worksObjets);
+
+    //Récupérer tous les Appartements
+    let worksAppartements = data.filter(function(works) {
+      return works.categoryId === 2;
+    });
+    //console.log(worksAppartements);
+
+    //Recuperer tous les Hotels&Restaurants
+    let worksHotels = data.filter(function(works) {
+      return works.categoryId === 3;
+    });
+   //console.log(worksHotels);
+
+  })
+  .catch(error => console.error(error));
+
+
+
+
+
+
+
+
+
+
+//TENTATIVE POUR CONSTRUIRE LISTE WORKS // 
+//const categoryId = []
+
+//const result = categoryId.filter (categoryId => categoryId.length =1 );
+
+//console.log(result);
+
 }
+
+
 
 
 
@@ -110,11 +160,6 @@ for (let i=0;i < categories.length; i++) {
     divCategories.appendChild(buttonCategories);
     //console.log(divCategories);
 
-
-
-
-
-
     let bouton = document.getElementById("filter"); /*recupere bouton */
     //console.log(bouton);
     const displayCategories = (buttonCategories) 
@@ -122,18 +167,45 @@ for (let i=0;i < categories.length; i++) {
     //displayWorks = (works[i].categoryId)
     //console.log(works[i].categoryId)
 
-    bouton.addEventListener("click", (buttonCategories) => {/* Renvoi element Action*/
-    //console.log(buttonCategories.target.textContent);
 
-    })
+
+ 
+
+  
+//});
+
+// TEST DERNIERE CHANCE //
+
+buttonCategories.addEventListener('click', () => {
+  //console.log(filtre.target.innerText)
+  let filtreButton =Array.from(categories);
+  let filtreWorks= Array.from(works)
+ // console.log( filtreButton);
+ //console.log( filtreWorks);
+ //filtreButton.sort (function(works){
+//return (works.id === 2 )
+        //return categoryId === categories
+  })
+
+ 
+
+//})
+
+/*});*/
 
 }
+
+
 }
+
+
 
 displayCategories(categories);
 //console.log(displayCategories);
 displayWorks(works);
 //console.log(displayWorks);
+
+
 
 
 //ENCORE UN TEST //
