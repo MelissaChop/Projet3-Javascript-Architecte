@@ -66,7 +66,7 @@ for (let i=0;i < works.length; i++) {
 
   }
 
-  async function filterWorks(filtreWorks){
+/*  async function filterWorks(filtreWorks){
 
 await fetch('http://localhost:5678/api/works')
         .then(response => response.json())
@@ -104,8 +104,7 @@ await fetch('http://localhost:5678/api/works')
 
 
 
-      }
-    
+      }*/
 
 
 
@@ -180,13 +179,13 @@ for (let i=0;i < categories.length; i++) {
 //_______________________________________________________________________________
 
 // TEST DERNIERE CHANCE +++ //
-
+/*
 buttonCategories.addEventListener('click', () => {
   //console.log(buttonCategories)
-  //const filtreButton =Array.from(categories);
+  const filtreButton =Array.from(filterWorks);
                                                     //let filtreWorks= Array.from(works)
  //console.log( filtreButton);
-
+filterWorks(1)
                                   //console.log( filtreWorks);
  //filtreButton.sort (function(works){
 //return (works.id === 2 )
@@ -195,7 +194,19 @@ buttonCategories.addEventListener('click', () => {
 const filteredCategories = categories.filter(category => category.id === i);
 console.log(filteredCategories);
 
-  })
+  })*/
+
+
+/*Penser a utiliser 
+if (clef === valeur){
+  Afficher 
+}else if {
+
+}else is {
+
+}ETC... */
+
+
 
 //____________________________________________________________________________
 // DERNIER TEST 2.0 //
