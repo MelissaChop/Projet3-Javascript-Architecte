@@ -3,8 +3,6 @@
 
 
           
-  /* Creer fonction Portfolio*/
-  async function displayWorks() {  
 
 
 const worksApi = await fetch('http://localhost:5678/api/works')
@@ -13,6 +11,10 @@ const worksApi = await fetch('http://localhost:5678/api/works')
  /*Mettre au format JSON */
 const works = await worksApi.json();
 //console.log(works);
+
+          
+  /* Creer fonction Portfolio*/
+  async function displayWorks(works) {  
 
   /*Choix de l'emplacement de la balise HTML*/
 
@@ -68,19 +70,6 @@ for (let i=0;i < works.length; i++) {
 //console.log(categories);
 
 
-/* Creer fonction Bouton*/
-
-async function displayCategories() {  
-
-
-
-
-/*Choix de l'emplacement de la balise HTML*/
-
-const divCategories = document.querySelector(".filter");
-//console.log(divCategories);
-
-
 /* Creation new categorie */
 const all = {
   id: 0,
@@ -90,12 +79,22 @@ const all = {
 categories.unshift(all); /*Rajouter au debut du tableau */
 
 
+/* Creer fonction Bouton*/
+
+async function displayCategories(categories) { 
+
+
+
+/*Choix de l'emplacement de la balise HTML*/
+
+const divCategories = document.querySelector(".filter");
+//console.log(divCategories);
+
 
 
 /*Boucle dans le tableau JSON */
 for (let i=0;i < categories.length; i++) {
   //console.log(categories[i].name);
-
 
   /*Creation des balises HTML*/
 
@@ -131,9 +130,9 @@ for (let i=0;i < categories.length; i++) {
 }
 }
 
-displayCategories();
+displayCategories(categories);
 //console.log(displayCategories);
-displayWorks();
+displayWorks(works);
 //console.log(displayWorks);
 
 
