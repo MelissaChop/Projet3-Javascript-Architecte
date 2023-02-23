@@ -64,7 +64,9 @@ for (let i=0;i < works.length; i++) {
 //console.log(result);
 
 
-}
+  }
+
+  async function filterWorks(filtreWorks){
 
 await fetch('http://localhost:5678/api/works')
         .then(response => response.json())
@@ -102,8 +104,8 @@ await fetch('http://localhost:5678/api/works')
 
 
 
-
-
+      }
+    
 
 
 
@@ -163,15 +165,21 @@ for (let i=0;i < categories.length; i++) {
     divCategories.appendChild(buttonCategories);
     //console.log(divCategories);
 
-    let bouton = document.getElementById("filter"); /*recupere bouton */
+
+
+
+
+//_____________________________________________________________________________________________
+   // let bouton = document.getElementById("filter"); /*recupere bouton */
     //console.log(bouton);
-    const displayCategories = (buttonCategories) 
+   // const displayCategories = (buttonCategories) 
     //console.log(buttonCategories);
     //displayWorks = (works[i].categoryId)
     //console.log(works[i].categoryId)
 
+//_______________________________________________________________________________
 
-// TEST DERNIERE CHANCE //
+// TEST DERNIERE CHANCE +++ //
 
 buttonCategories.addEventListener('click', () => {
   //console.log(buttonCategories)
@@ -189,7 +197,22 @@ console.log(filteredCategories);
 
   })
 
- 
+//____________________________________________________________________________
+// DERNIER TEST 2.0 //
+/*
+  buttonCategories.addEventListener('click', () => {
+    const filtreButton =Array.from(works);
+    // Filtrer les résultats de l'API Fetch en utilisant la méthode filter
+    const worksAppartements = data.filter(function(works) {
+      return works.categoryId === 2;
+    });
+  
+    // Afficher les résultats dans la galerie
+    document.querySelector(".gallery").innerHTML = "";
+    displayWorks(worksAppartements);
+  });
+
+ _____________________________________________________________
 
 //})
 
@@ -234,7 +257,7 @@ displayWorks(works);
 
 
 
-
+//____________________________________________________________________
 //ENCORE UN TEST //
 
 
@@ -251,7 +274,7 @@ for (let i = 0; i < works.length; i++) {
 }
 
 
-
+//______________________________________________________________________
 
 
 
@@ -269,7 +292,7 @@ for (let i = 0; i < works.length; i++) {
 **});
 //}
 
-
+//______________________________________________________________________
 // CREATION BOUTONS ACTIF // 
 
 // 1ER TEST//
@@ -282,6 +305,9 @@ for (let i = 0; i < works.length; i++) {
 //  const  buttonFiltre = 
   
 //});
+
+
+//______________________________________________________________________
 
 //2ND TEST//
 
@@ -301,7 +327,7 @@ for (let i = 0; i < works.length; i++) {
 //})
 
 
-  
+//______________________________________________________________________
 
 
 
