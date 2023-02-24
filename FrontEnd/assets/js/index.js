@@ -179,22 +179,59 @@ for (let i=0;i < categories.length; i++) {
 //_______________________________________________________________________________
 
 // TEST DERNIERE CHANCE +++ //
-/*
+
 buttonCategories.addEventListener('click', () => {
-  //console.log(buttonCategories)
-  const filtreButton =Array.from(filterWorks);
+                                                 //console.log(buttonCategories)
+                                                  // const filtreButton =Array.from(filterWorks);
                                                     //let filtreWorks= Array.from(works)
- //console.log( filtreButton);
-filterWorks(1)
-                                  //console.log( filtreWorks);
- //filtreButton.sort (function(works){
-//return (works.id === 2 )
-        //return categoryId === categories
+                                                              //console.log( filtreButton);
+                                                    //filterWorks(3)
+                                              //console.log( filtreWorks);
+                                                            //filtreButton.sort (function(works){
+                                                              //return (works.id === 2 )
+                                                         //return categoryId === categories
 
 const filteredCategories = categories.filter(category => category.id === i);
 console.log(filteredCategories);
 
-  })*/
+const worksFiltre = fetch('http://localhost:5678/api/works')
+//console.log(worksApi);
+ /*Mettre au format JSON */
+
+
+if (filteredCategories === i ){
+
+   // Recuperez toute la gallery
+ 
+
+} else if (filteredCategories === 1 ) {
+
+  // Récupérer tous les objets 
+ /* let worksObjets = data.filter(function(works) {
+    return works.categoryId === 1;
+  });
+  //console.log(worksObjets);
+  document.querySelector(".gallery").innerHTML = "";
+  displayWorks(worksObjets);*/
+
+} else if (filteredCategories === 2) {
+
+//Récupérer tous les Appartements
+/* let worksAppartements = data.filter(function(works) {
+  return works.categoryId === 2;
+});
+console.log(worksAppartements);
+document.querySelector(".gallery").innerHTML = "";
+displayWorks(worksAppartements);
+*/
+
+}
+
+}
+
+)
+
+
 
 
 /*Penser a utiliser 
@@ -229,8 +266,8 @@ if (clef === valeur){
 
 /*});*/
 
-}
 
+}
 
 }
 
