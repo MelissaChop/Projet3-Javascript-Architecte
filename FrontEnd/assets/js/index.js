@@ -148,7 +148,7 @@ async function displayCategories(categories) {
     //console.log(works[i].categoryId)
 
     //_______________________________________________________________________________
-                                          //24 fev 2024//
+                                          //24 fev 2024// - 6eme test
   const boutonFiltrer = document.querySelector(".filter");
   const allWorks = [...works]; // faire une copie de l'ensemble des works
   //console.log(allWorks)
