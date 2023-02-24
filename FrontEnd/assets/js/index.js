@@ -53,6 +53,7 @@ async function displayWorks(works) {
   //console.log(result);
 }
 
+
 /*  async function filterWorks(filtreWorks){
 
 await fetch('http://localhost:5678/api/works')
@@ -147,87 +148,34 @@ async function displayCategories(categories) {
     //console.log(works[i].categoryId)
 
     //_______________________________________________________________________________
+                                          //24 fev 2024//
+  const boutonFiltrer = document.querySelector(".filter");
+  const allWorks = [...works]; // faire une copie de l'ensemble des works
+  //console.log(allWorks)
+  const categoriesF = Array.from(categories);
+ // console.log(categoriesF)
 
-    // TEST DERNIERE CHANCE +++ //
 
-    buttonCategories.addEventListener("click", () => {
-      //console.log(buttonCategories)
-      // const filtreButton =Array.from(filterWorks);
-      //let filtreWorks= Array.from(works)
-      //console.log( filtreButton);
-      //filterWorks(3)
-      //console.log( filtreWorks);
-      //filtreButton.sort (function(works){
-      //return (works.id === 2 )
-      //return categoryId === categories
+  boutonFiltrer.addEventListener("click", function () {
 
-      const filteredCategories = categories.filter(
-        (category) => category.id === i
-      );
-      console.log(filteredCategories);
+const filteredCategories = categoriesF.filter(
+      (category) => category.id === i
+    );
 
-      const worksFiltre = fetch("http://localhost:5678/api/works")
-        //console.log(worksApi);
-        /*Mettre au format JSON */
-        .then((response) => response.json())
-        .then((data) => {
-          // Recuperez toute la gallery
-          data.forEach(function (works) {
-            console.log(works);
-          });
-        });
+//  console.log(filteredCategories);
 
-      if (filteredCategories === i) {
-        // Recuperez toute la gallery
-      } else if (filteredCategories === 1) {
-        // Récupérer tous les objets
-        /* let worksObjets = data.filter(function(works) {
-    return works.categoryId === 1;
+const worksFiltrees = works.filter(function (works) {
+return works.categoryId === i;
   });
-  //console.log(worksObjets);
-  document.querySelector(".gallery").innerHTML = "";
-  displayWorks(worksObjets);*/
-      } else if (filteredCategories === 2) {
-        //Récupérer tous les Appartements
-        /* let worksAppartements = data.filter(function(works) {
-  return works.categoryId === 2;
-});
-console.log(worksAppartements);
+//console.log(worksFiltrees)
+
 document.querySelector(".gallery").innerHTML = "";
-displayWorks(worksAppartements);
-*/
-      }
-    });
+ displayWorks(worksFiltrees);
+ })
 
-    /*Penser a utiliser 
-if (clef === valeur){
-  Afficher 
-}else if {
+    //_________________________________________________________________
 
-}else is {
 
-}ETC... */
-
-    //____________________________________________________________________________
-    // DERNIER TEST 2.0 //
-    /*
-  buttonCategories.addEventListener('click', () => {
-    const filtreButton =Array.from(works);
-    // Filtrer les résultats de l'API Fetch en utilisant la méthode filter
-    const worksAppartements = data.filter(function(works) {
-      return works.categoryId === 2;
-    });
-  
-    // Afficher les résultats dans la galerie
-    document.querySelector(".gallery").innerHTML = "";
-    displayWorks(worksAppartements);
-  });
-
- _____________________________________________________________
-
-//})
-
-/*});*/
   }
 }
 
@@ -236,69 +184,6 @@ displayCategories(categories);
 displayWorks(works);
 //console.log(displayWorks);
 
-//____________________________________________________________________
-//ENCORE UN TEST //
-
-/*async function updateWorks(categoryId) {
-const works = await getFilteredWorks(categoryId);
-const divGallery = document.querySelector(".gallery");
-divGallery.innerHTML = "";
-
-for (let i = 0; i < works.length; i++) {
-// création des éléments HTML pour chaque œuvre
-// ajout des éléments HTML à la galerie
-}
-}
-
-
-//______________________________________________________________________
-
-
-
-
-//TEST RATE
-
-/**async function filterBouton( displayCategories , displayWorks ) {  
- // console.log(displayWorks);
- let action = document.getElementById("choice_pictures");
- //console.log(action)
- action.addEventListener("click", () => {/* Renvoi element Action*/
-//console.log(action);
-/*buttonCategories(categories) = buttonCategories.filter(categories[i].id === works[i].categoryId );
-/*return (buttonCategories);
-**});
-//}
-
-//______________________________________________________________________
-// CREATION BOUTONS ACTIF // 
-
-// 1ER TEST//
-
-//FILTRE
-//let action= document.getElementById("choice_pictures");
-//console.log(action);
-
-//buttonCategories.addEventListener('click', () => {
-//  const  buttonFiltre = 
-  
-//});
-
-
-//______________________________________________________________________
-
-//2ND TEST//
-
-
-//let action = document.getElementById("filter");
-//console.log(action);
-//action.addEventListener("click", (event) => {/* Renvoi element Action*/
-//console.log(event.target.textContent);
-//}) ;
-
-//const boutonFiltre = document.querySelector(".filter");
-//boutonFiltre.addEventListener("click", function() {
-
-//})
 
 //______________________________________________________________________
 
