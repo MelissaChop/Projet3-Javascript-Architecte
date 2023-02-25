@@ -100,12 +100,6 @@ async function displayCategories(categories) {
 
 
  buttonCategories.addEventListener("click", function () {
- 
-  //console.log(buttonCategories)
-
-  //buttonCategories.style.color ="white";
- // buttonCategories.style.backgroundColor = "#1D6154";
-  
 
 const worksFiltrees = works.filter(function (works) {
   if (i>0){
@@ -125,11 +119,6 @@ document.querySelector(".gallery").innerHTML = "";
  /* document.querySelector(".gallery").innerHTML = "";
   displayWorks(works)*/
  })
-
-
-
-    //_________________________________________________________________
-
 
   }
 }
