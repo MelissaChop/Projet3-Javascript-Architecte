@@ -149,10 +149,12 @@ li:hover {
 	font-weight: bold;
 }
 
-.choice_pictures:hover{
+.choice_pictures:focus{
 	background-color: #1D6154;
 	color: white;
 }
+
+
 
 .gallery {
 	width: 100%;

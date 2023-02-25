@@ -87,7 +87,7 @@ async function displayCategories(categories) {
     buttonCategories.classList.add("choice_pictures"); /*Ajout class*/
     buttonCategories.dataset.id = categories[i].id;
 
-    //console.log(buttonCategories);
+    console.log(buttonCategories);
 
     /* Lien entre les blocs enfant et parent*/
 
@@ -97,24 +97,36 @@ async function displayCategories(categories) {
 
     //_______________________________________________________________________________
 //FILTRE SUR LES BOUTONS //
-const categoriesF = Array.from(categories);
- // console.log(categoriesF)
+
 
  buttonCategories.addEventListener("click", function () {
+ 
+  //console.log(buttonCategories)
+
+  //buttonCategories.style.color ="white";
+ // buttonCategories.style.backgroundColor = "#1D6154";
+  
 
 const worksFiltrees = works.filter(function (works) {
-return works.categoryId === i
+  if (i>0){
+return works.categoryId === i}
+else  {
+  return works
+}
+
   })
 //console.log(worksFiltrees)
 
 
-if (i > 0){
+//if (i > 0){
 document.querySelector(".gallery").innerHTML = "";
- displayWorks(worksFiltrees)}
- else{
-  document.querySelector(".gallery").innerHTML = "";
-  displayWorks(works)}
- }) 
+ displayWorks(worksFiltrees);
+ //else{
+ /* document.querySelector(".gallery").innerHTML = "";
+  displayWorks(works)*/
+ })
+
+
 
     //_________________________________________________________________
 
