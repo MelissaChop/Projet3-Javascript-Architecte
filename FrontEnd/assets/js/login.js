@@ -8,11 +8,16 @@ let login = await fetch("http://localhost:5678/api/users/login", {
   //console.log(login);
   method: "POST",
   headers: {
-    "Content-Type": "application/json",
-                      "charset=utf-8",
+    "Content-Type": "application/json,charset=utf-8",
   },
   body: JSON.stringify(user),
 });
 
 const enterLogin = await login.json();
 alert(enterLogin.message);
+
+//Sélectionner le texte saisi dans le contrôle.//
+
+document.getElementById("selectAll").onclick = function (event) {
+  document.getElementById("userPassword").select();
+};
