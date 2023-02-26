@@ -44,10 +44,7 @@ async function displayWorks(works) {
     divGallery.appendChild(worksElement);
     //console.log(divGallery);
   }
-
-
 }
-
 
 /* CREATION BOUTONS*/
 
@@ -94,32 +91,26 @@ async function displayCategories(categories) {
     divCategories.appendChild(buttonCategories);
     //console.log(divCategories);
 
-
     //_______________________________________________________________________________
-//FILTRE SUR LES BOUTONS //
+    //FILTRE SUR LES BOUTONS //
 
+    buttonCategories.addEventListener("click", function () {
+      const worksFiltrees = works.filter(function (works) {
+        if (i > 0) {
+          return works.categoryId === i;
+        } else {
+          return works;
+        }
+      });
+      //console.log(worksFiltrees)
 
- buttonCategories.addEventListener("click", function () {
-
-const worksFiltrees = works.filter(function (works) {
-  if (i>0){
-return works.categoryId === i}
-else  {
-  return works
-}
-
-  })
-//console.log(worksFiltrees)
-
-
-//if (i > 0){
-document.querySelector(".gallery").innerHTML = "";
- displayWorks(worksFiltrees);
- //else{
- /* document.querySelector(".gallery").innerHTML = "";
+      //if (i > 0){
+      document.querySelector(".gallery").innerHTML = "";
+      displayWorks(worksFiltrees);
+      //else{
+      /* document.querySelector(".gallery").innerHTML = "";
   displayWorks(works)*/
- })
-
+    });
   }
 }
 
@@ -127,6 +118,3 @@ displayCategories(categories);
 //console.log(displayCategories);
 displayWorks(works);
 //console.log(displayWorks);
-
-
-
