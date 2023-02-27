@@ -7,8 +7,8 @@ const password = document.getElementById("password");
 //console.log(password);
 
 let user = {
-  email: loginForm.email.value,
-  password: loginForm.password.value,
+  email: "loginForm.email.value",
+  password: "loginForm.password.value",
 };
 //console.log(user);
 
@@ -19,6 +19,7 @@ let loginIn = await fetch("http://localhost:5678/api/users/login", {
   headers: {
     "Content-Type": "application/json;charset=utf-8",
   },
+  Authorization: `Bearer ${password}`,
   body: JSON.stringify(user),
 });
 
