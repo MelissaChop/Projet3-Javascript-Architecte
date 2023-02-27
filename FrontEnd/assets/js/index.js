@@ -82,7 +82,10 @@ async function displayCategories(categories) {
     const buttonCategories = document.createElement("button");
     buttonCategories.innerText = categories[i].name;
     buttonCategories.classList.add("choice_pictures"); /*Ajout class*/
-    buttonCategories.dataset.id = categories[i].id;
+    if (categories[i].id === 0) {
+      buttonCategories.classList.add("active");
+    }
+    //buttonCategories.dataset.id = categories[i].id;
 
     console.log(buttonCategories);
 
@@ -95,21 +98,18 @@ async function displayCategories(categories) {
     //FILTRE SUR LES BOUTONS //
 
     buttonCategories.addEventListener("click", function () {
-      const worksFiltrees = works.filter(function (works) {
-        if (i > 0) {
-          return works.categoryId === i;
-        } else {
-          return works;
-        }
-      });
-      //console.log(worksFiltrees)
+      let worksFiltrees = works;
 
-      //if (i > 0){
+      if (categories[i].id != 0) {
+        worksFiltrees = works.filter(function (work) {
+          return work.categoryId === categories[i].id;
+        });
+      }
       document.querySelector(".gallery").innerHTML = "";
       displayWorks(worksFiltrees);
-      //else{
-      /* document.querySelector(".gallery").innerHTML = "";
-  displayWorks(works)*/
+
+      document.querySelector(".active").classList.remove("active");
+      buttonCategories.classList.add("active");
     });
   }
 }

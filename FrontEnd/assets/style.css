@@ -173,11 +173,15 @@ a,.submit{
 	font-weight: bold;
 }
 
-.choice_pictures:focus{
+/*.choice_pictures:focus{
+	background-color: #1D6154;
+	color: white;
+}*/
+
+.active{
 	background-color: #1D6154;
 	color: white;
 }
-
 
 
 .gallery {

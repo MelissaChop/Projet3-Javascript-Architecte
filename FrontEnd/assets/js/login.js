@@ -4,31 +4,44 @@ const password = document.getElementById("password");
 
 //Sélectionner le texte saisi dans le contrôle.//
 
-document.getElementById("selectAll").onclick = function (event) {
+document.querySelector(".loginForm").onsubmit = function (event) {
   event.preventDefault(); // Permet de ne pas rediriger//
 
   // Recuperation API Login //
-  let loginIn = fetch("http://localhost:5678/api/users/login", {
+  fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    Authorization: `Bearer ${password}`,
     body: JSON.stringify({
       email: `${email.value}`,
       password: `${password.value}`,
     }),
   })
-    .then((reponse) => reponse.json())
-    .then((data) => console.log(data));
+    .then((reponse) => {
+      if (!reponse.ok) {
+        if (reponse.status === 404) {
+          alert((reponse.message = "Non trouvé"));
+          console.log("test" + reponse.status);
+        } else if (reponse.status === 401) {
+          alert((reponse.message = "Utilisateur non autorisé"));
+        }
+      }
 
-  //window.location.href = "./index.html";
+      reponse.json();
+    })
+    .then((data) => {
+      console.log(data);
+      window.sessionStorage.setItem("user", JSON.stringify(data));
+    })
 
-  window.localStorage.setItem(
-    "token",
-    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4`
-  );
+    .catch((error) => console.log(error));
 };
+
+//Authorization: `Bearer ${token}`,
+
+// Redirection si user autorise//
+//window.location.href = "./index.html";
 
 //const enterLogin = await loginIn.json();
 //alert(enterLogin.message);
