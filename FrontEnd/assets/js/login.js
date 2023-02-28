@@ -25,14 +25,22 @@ document.querySelector(".loginForm").onsubmit = function (event) {
           console.log("test" + reponse.status);
         } else if (reponse.status === 401) {
           alert((reponse.message = "Utilisateur non autorisé"));
+        } else {
+          throw new Error("Erreur détectée!");
         }
+      } else {
+        return reponse.json();
       }
-
-      reponse.json();
     })
     .then((data) => {
       console.log(data);
-      window.sessionStorage.setItem("user", JSON.stringify(data));
+      sessionStorage.setItem("user", JSON.stringify(data));
+      if ((data.userId = 1)) {
+        window.location.href = "./index.html";
+      }
+      /* if (data === 1) {
+        window.location.href = "./index.html";
+      }*/
     })
 
     .catch((error) => console.log(error));

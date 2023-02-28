@@ -86,7 +86,7 @@ async function displayCategories(categories) {
       buttonCategories.classList.add("active");
     }
 
-    console.log(buttonCategories);
+    //console.log(buttonCategories);
 
     /* Lien entre les blocs enfant et parent*/
 
