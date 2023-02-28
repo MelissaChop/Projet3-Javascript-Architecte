@@ -5,7 +5,7 @@ const password = document.getElementById("password");
 //Sélectionner le texte saisi dans le contrôle.//
 
 document.querySelector(".loginForm").onsubmit = function (event) {
-  event.preventDefault(); // Permet de ne pas rediriger//
+  // event.preventDefault(); // Permet de ne pas rediriger//
 
   // Recuperation API Login //
   fetch("http://localhost:5678/api/users/login", {
@@ -26,7 +26,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
         } else if (reponse.status === 401) {
           alert((reponse.message = "Utilisateur non autorisé"));
         } else {
-          throw new Error("Erreur détectée!");
+          throw new error("Erreur détectée!");
         }
       } else {
         return reponse.json();
@@ -34,32 +34,11 @@ document.querySelector(".loginForm").onsubmit = function (event) {
     })
     .then((data) => {
       console.log(data);
-      sessionStorage.setItem("user", JSON.stringify(data));
+      window.sessionStorage.setItem("user", JSON.stringify(data));
       if ((data.userId = 1)) {
         window.location.href = "./index.html";
       }
-      /* if (data === 1) {
-        window.location.href = "./index.html";
-      }*/
     })
 
     .catch((error) => console.log(error));
 };
-
-//Authorization: `Bearer ${token}`,
-
-// Redirection si user autorise//
-//window.location.href = "./index.html";
-
-//const enterLogin = await loginIn.json();
-//alert(enterLogin.message);
-
-/*async function userLog(enterLogin) {
-  // Recuperation ID //
-  const userId = window.sessionStorage.getItem(userId);
-  // Test recuperation TOken
-  const token =
-    window.sessionStorage.getItem(token); /*SessionStorage : reste actif le 
-temsps que la page est lance, incluant les rechargement et restauration de page*/
-/*}*/
-//console.log(userLog);
