@@ -85,7 +85,6 @@ async function displayCategories(categories) {
     if (categories[i].id === 0) {
       buttonCategories.classList.add("active");
     }
-    //buttonCategories.dataset.id = categories[i].id;
 
     console.log(buttonCategories);
 
