@@ -77,7 +77,7 @@ document.querySelector(".loginForm").onsubmit = async function (event) {
 
     console.log(localStorage);
 
-    window.location.href = "./index.html";
+    // window.location.href = "./index.html";
   } else if (log.status === 404 || log.status === 401) {
     alert("Email ou Mot de passe incorrect");
   }
