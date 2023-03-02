@@ -4,7 +4,7 @@ const password = document.getElementById("password");
 
 //Sélectionner le texte saisi dans le contrôle.//
 
-/*document.querySelector(".loginForm").onsubmit = function (event) {
+document.querySelector(".loginForm").onsubmit = function (event) {
   event.preventDefault(); // Permet de ne pas rediriger//
 
   // Recuperation API Login //
@@ -21,11 +21,27 @@ const password = document.getElementById("password");
     .then((reponse) => {
       if (!reponse.ok) {
         if (reponse.status === 404) {
-          alert("Utilisateur non trouvé");
-          //console.log("test" + reponse.status);
+          let alert = document.querySelector("form");
+
+          let message = document.createElement("p");
+          message.setAttribute("id", "toDelete");
+          let locationMessage = alert.firstChild;
+          alert.insertBefore(message, locationMessage);
+
+          message.style.color = "red";
+          message.innerText = "Utilisateur non trouvé!";
         } else if (reponse.status === 401) {
-          alert("Utilisateur non autorisé");
+          let alert = document.querySelector("form");
+
+          let message = document.createElement("p");
+          message.setAttribute("id", "toDelete");
+          let locationMessage = alert.firstChild;
+          alert.insertBefore(message, locationMessage);
+
+          message.style.color = "red";
+          message.innerText = "Utilisateur non autorisé!";
         }
+
         throw new Error("Erreur détectée!");
       }
       return reponse.json();
@@ -33,22 +49,30 @@ const password = document.getElementById("password");
 
     .then((data) => {
       console.log(data);
+
+      console.log(data.token); // Vérifiez si data.token est correctement défini
       window.sessionStorage.setItem("Token", JSON.stringify(data.token));
-      // window.sessionStorage.setItem("User", data.userId);
       console.log(window.sessionStorage);
 
-      let token = window.sessionStorage.getItem("Token");
-      console.log(token);
+      //let token = window.sessionStorage.getItem("Token");
+      //console.log(token);
+
+      const toDelete = document.getElementById("toDelete");
+      if (!toDelete) {
+        return;
+      } else {
+        toDelete.remove();
+      }
     })
 
     .catch((error) => console.error(error));
-};*/
+};
 
-document.querySelector(".loginForm").onsubmit = async function (event) {
+/*document.querySelector(".loginForm").onsubmit = async function (event) {
   event.preventDefault(); // Permet de ne pas rediriger//
 
   // Recuperation API Login //
-  let log = await fetch("http://localhost:5678/api/users/login", {
+  let log = await fetch(`http://localhost:5678/api/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -67,20 +91,10 @@ document.querySelector(".loginForm").onsubmit = async function (event) {
     window.sessionStorage.setItem("Token", JSON.stringify(userLog.token));
     console.log(window.sessionStorage);
 
-    //Duree de validite de la session de 24h//
-    const loginTime = new Date();
-    let logOffTime = new Date();
-    logOffTime = Date.parse(logOffTime) + 24 * 60 * 60 * 1000; // Ajoute 24 heures à la date courante
-
-    window.sessionStorage.setItem("loginTime", loginTime);
-    window.sessionStorage.setItem("logOffTime", logOffTime);
-
-    console.log(localStorage);
-
     // window.location.href = "./index.html";
   } else if (log.status === 404 || log.status === 401) {
     alert("Email ou Mot de passe incorrect");
   }
 };
 let token = window.sessionStorage.getItem("Token");
-console.log(token);
+console.log(token);*/
