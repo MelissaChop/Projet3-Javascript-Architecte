@@ -117,3 +117,10 @@ displayCategories(categories);
 //console.log(displayCategories);
 displayWorks(works);
 //console.log(displayWorks);
+
+const token = window.sessionStorage.getItem("User");
+const button = document.querySelector(".filter");
+console.log(token);
+if (token != null) {
+  button.remove();
+}
