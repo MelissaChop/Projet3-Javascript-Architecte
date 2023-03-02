@@ -51,11 +51,13 @@ document.querySelector(".loginForm").onsubmit = function (event) {
       console.log(data);
 
       console.log(data.token); // Vérifiez si data.token est correctement défini
-      window.sessionStorage.setItem("Token", JSON.stringify(data.token));
+      window.sessionStorage.setItem("User", JSON.stringify(data));
       console.log(window.sessionStorage);
 
       //let token = window.sessionStorage.getItem("Token");
       //console.log(token);
+
+      window.location.href = "./index.html";
 
       const toDelete = document.getElementById("toDelete");
       if (!toDelete) {
