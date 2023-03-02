@@ -146,7 +146,8 @@ if (token != null) {
   publiChang.style.paddingLeft = "23px";
   publiChang.style.paddingTop = "11px";
   publiChang.style.paddingBottom = "11px";
-  publiChang.style.minWidth = "216px";
+  publiChang.style.maxWidth = "216px";
+  publiChang.style.maxHeight = "38px";
   publiChang.style.borderRadius = "25px";
 
   console.log(enTete);
