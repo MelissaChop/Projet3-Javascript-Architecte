@@ -57,7 +57,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
       //let token = window.sessionStorage.getItem("Token");
       //console.log(token);
 
-      window.location.href = "./index.html";
+      //window.location.href = "./index.html";
 
       const toDelete = document.getElementById("toDelete");
       if (!toDelete) {

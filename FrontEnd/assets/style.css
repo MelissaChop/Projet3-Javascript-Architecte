@@ -62,7 +62,26 @@ header {
 	display: flex;
     align-items: center;
 	justify-content: center;
+	height : 59px;
+  width : 100%;
+ background-color:  black;
 }
+
+
+
+#modEd{
+	margin-right: 21px;
+	color:white;
+}
+
+#publiChang{
+	background-color:  white;
+	padding: 11px 23px 11px 23px;
+	max-width: 216px;
+	max-height: 38px;
+	border-radius:  25px;
+}
+
 section {
 	margin: 50px 0
 }
@@ -125,6 +144,13 @@ a,.submit{
 	cursor: pointer;
 }
 
+#modifProfil{
+	margin-left: 25%;
+  margin-top: 1%;
+ min-width: 100%;
+max-width: 332px;
+
+}
 
 
 #introduction {
@@ -154,9 +180,22 @@ a,.submit{
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+#modifProjet{
+	min-width: 84px;
+	align-self: center;
+    max-height: 36px;
+ font-size: 14px;
+ font-weight: 400;
+  color: black;
+  font-family:'Work sans';
+  margin-left: 57px;
+}
+
 #portfolio h2 {
-	text-align: center;
 	margin-bottom: 1em;
+	display: flex;
+    justify-content: center;
 }
 
 .filter{
@@ -289,3 +328,24 @@ footer nav ul {
 	margin: 2em
 }
 
+#barre{
+	display: none;
+}
+
+#modifProfil, #modifArticle, #modifProjet{
+	display: none;
+}
+
+.fa-pen-to-square{
+	font-size: 15px;
+	margin-right: 1%;
+	font-weight: 400;
+}
+
+#barre .fa-pen-to-square{
+	color: white;
+}
+
+#modifProjet .fa-pen-to-square{
+	padding-right: 5%;
+}

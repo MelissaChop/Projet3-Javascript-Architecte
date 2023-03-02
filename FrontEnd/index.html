@@ -8,10 +8,19 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" 
 			rel="stylesheet">
+
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+			crossorigin="anonymous" referrerpolicy="no-referrer" >
+	
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
-<body> <div id="barre"><a id="modEd"></a><a id="publiChang"></a></div>
+<body> <div id="barre">
+	<i class="fa-solid fa-pen-to-square"></i>
+	<a id="modEd">Mode édition</a>
+	<a id="publiChang">publier les changements</a>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -30,14 +39,18 @@
 			<img src="./assets/images/sophie-bluel.png" alt="sophie-bluel">
 		</figure>
 		<article>
+			<a id="modifArticle"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
+		<a id="modifProfil"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 	</section>
 	<section id="portfolio">
-		<h2 id ="titre">Mes Projets</h2>
+		<h2 id ="titre">Mes Projets 
+			<a id="modifProjet"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+		</h2>
 
 		<aside class="modal-container" id="modal"></aside>
 

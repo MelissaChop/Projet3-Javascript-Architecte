@@ -118,67 +118,33 @@ displayCategories(categories);
 displayWorks(works);
 //console.log(displayWorks);
 
-const token = window.sessionStorage.getItem("User");
+const connexion = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
 const gallery = document.getElementById("gallery");
-console.log(token);
-if (token != null) {
-  button.remove();
-  gallery.style.marginTop = "92px";
+console.log(connexion);
+
+let enTete = document.getElementById("#barre");
+if (connexion != null) {
+  button.style.display = "none";
 
   //Ajout En tete //
   //Barre noir //
-  const enTete = document.getElementById("barre");
-  enTete.style.height = "59px";
-  enTete.style.width = "100%";
-  enTete.style.backgroundColor = "black";
-
-  // Texte//
-  const modEd = document.getElementById("modEd");
-  modEd.innerText = "Mode édition";
-  modEd.style.marginRight = "21px";
-  modEd.style.color = "white";
-
-  const publiChang = document.getElementById("publiChang");
-  publiChang.innerText = "publier les changements";
-  publiChang.style.backgroundColor = "white";
-  publiChang.style.paddingRight = "23px";
-  publiChang.style.paddingLeft = "23px";
-  publiChang.style.paddingTop = "11px";
-  publiChang.style.paddingBottom = "11px";
-  publiChang.style.maxWidth = "216px";
-  publiChang.style.maxHeight = "38px";
-  publiChang.style.borderRadius = "25px";
-
-  //console.log(enTete);
+  let enTete = document.getElementById("barre");
+  enTete.style.display = "block";
+  enTete.style.display = "flex";
 
   //Ajout "Modifié"
-  const photoProfil = document.querySelector("#introduction");
-  const modifProfil = document.createElement("a");
-  photoProfil.appendChild(modifProfil);
-  modifProfil.innerText = "modifier";
-  modifProfil.style.marginLeft = "30%";
-  modifProfil.style.marginTop = "1%";
-  modifProfil.style.minWidth = "100%";
+  let modifProfil = document.querySelector("#modifProfil");
+  modifProfil.style.display = "block";
 
-  const titreProjet = document.querySelector("#titre");
-  const modifProjet = document.createElement("a");
-  titreProjet.appendChild(modifProjet);
-  modifProjet.innerText = "modifier";
-  modifProjet.style.fontSize = "14px";
-  modifProjet.style.fontWeight = "400";
-  modifProjet.style.color = "black";
-  modifProjet.style.fontFamily = "Work sans";
-  modifProjet.style.marginLeft = "57px";
-  //console.log(titreProjet);
+  let modifArticle = document.querySelector("#modifArticle");
+  modifArticle.style.display = "block";
 
-  const intro = document.querySelector("#introduction article");
-  const modifIntro = document.createElement("a");
-  intro.appendChild(modifIntro);
-  intro.insertBefore(modifIntro, intro.firstChild);
-  modifIntro.innerText = "modifier";
-  modifIntro.style.paddingBottom = "10%";
-  console.log(intro);
+  let modifProjet = document.querySelector("#modifProjet");
+  modifProjet.style.display = "block";
+
+  let titreGallery = document.querySelector("#portfolio h2");
+  titreGallery.style.marginBottom = "2em";
 
   const titre = document.querySelector("#introduction article h2");
   titre.style.marginTop = "5%";
