@@ -120,7 +120,9 @@ displayWorks(works);
 
 const token = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
+const gallery = document.getElementById("gallery");
 console.log(token);
 if (token != null) {
   button.remove();
+  gallery.style.marginTop = "92px";
 }
