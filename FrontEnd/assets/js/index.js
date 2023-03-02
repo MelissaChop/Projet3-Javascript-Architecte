@@ -125,4 +125,29 @@ console.log(token);
 if (token != null) {
   button.remove();
   gallery.style.marginTop = "92px";
+
+  //Ajout En tete //
+  //Barre noir //
+  const enTete = document.getElementById("barre");
+  enTete.style.height = "59px";
+  enTete.style.width = "100%";
+  enTete.style.backgroundColor = "black";
+
+  // Texte//
+  const modEd = document.getElementById("modEd");
+  modEd.innerText = "Mode édition";
+  modEd.style.marginRight = "21px";
+  modEd.style.color = "white";
+
+  const publiChang = document.getElementById("publiChang");
+  publiChang.innerText = "publier les changements";
+  publiChang.style.backgroundColor = "white";
+  publiChang.style.paddingRight = "23px";
+  publiChang.style.paddingLeft = "23px";
+  publiChang.style.paddingTop = "11px";
+  publiChang.style.paddingBottom = "11px";
+  publiChang.style.minWidth = "216px";
+  publiChang.style.borderRadius = "25px";
+
+  console.log(enTete);
 }
