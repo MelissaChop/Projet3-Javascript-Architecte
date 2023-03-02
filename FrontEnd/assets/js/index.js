@@ -151,4 +151,13 @@ if (token != null) {
   publiChang.style.borderRadius = "25px";
 
   console.log(enTete);
+
+  //Ajout "Modifié"
+  const photoProfil = document.querySelector("#introduction");
+  const modifProfil = document.createElement("a");
+  photoProfil.appendChild(modifProfil);
+  modifProfil.innerText = "modifier";
+  modifProfil.style.marginLeft = "5%";
+  modifProfil.style.marginTop = "1%";
+  modifProfil.style.minWidth = "100%";
 }

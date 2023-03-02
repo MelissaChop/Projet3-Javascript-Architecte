@@ -130,6 +130,7 @@ a,.submit{
 #introduction {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
 #introduction figure {
 	flex: 1
