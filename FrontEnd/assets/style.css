@@ -192,6 +192,10 @@ max-width: 332px;
   margin-left: 57px;
 }
 
+#modifProjet:hover{
+	color: #B1663C!important;
+}
+
 #portfolio h2 {
 	margin-bottom: 1em;
 	display: flex;
