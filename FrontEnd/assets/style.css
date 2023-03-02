@@ -131,9 +131,11 @@ a,.submit{
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
+    justify-content: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
+	max-width: 50%;
 }
 #introduction img {
 	display: block;
@@ -142,7 +144,8 @@ a,.submit{
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	max-width: 35%;
 }
 #introduction h2 {
 	margin-bottom: 1em;

@@ -150,14 +150,36 @@ if (token != null) {
   publiChang.style.maxHeight = "38px";
   publiChang.style.borderRadius = "25px";
 
-  console.log(enTete);
+  //console.log(enTete);
 
   //Ajout "Modifié"
   const photoProfil = document.querySelector("#introduction");
   const modifProfil = document.createElement("a");
   photoProfil.appendChild(modifProfil);
   modifProfil.innerText = "modifier";
-  modifProfil.style.marginLeft = "5%";
+  modifProfil.style.marginLeft = "30%";
   modifProfil.style.marginTop = "1%";
   modifProfil.style.minWidth = "100%";
+
+  const titreProjet = document.querySelector("#titre");
+  const modifProjet = document.createElement("a");
+  titreProjet.appendChild(modifProjet);
+  modifProjet.innerText = "modifier";
+  modifProjet.style.fontSize = "14px";
+  modifProjet.style.fontWeight = "400";
+  modifProjet.style.color = "black";
+  modifProjet.style.fontFamily = "Work sans";
+  modifProjet.style.marginLeft = "57px";
+  //console.log(titreProjet);
+
+  const intro = document.querySelector("#introduction article");
+  const modifIntro = document.createElement("a");
+  intro.appendChild(modifIntro);
+  intro.insertBefore(modifIntro, intro.firstChild);
+  modifIntro.innerText = "modifier";
+  modifIntro.style.paddingBottom = "10%";
+  console.log(intro);
+
+  const titre = document.querySelector("#introduction article h2");
+  titre.style.marginTop = "5%";
 }
