@@ -71,34 +71,3 @@ document.querySelector(".loginForm").onsubmit = function (event) {
     toDelete.remove();
   }
 };
-
-/*document.querySelector(".loginForm").onsubmit = async function (event) {
-  event.preventDefault(); // Permet de ne pas rediriger//
-
-  // Recuperation API Login //
-  let log = await fetch(`http://localhost:5678/api/users/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({
-      email: `${email.value}`,
-      password: `${password.value}`,
-    }),
-  });
-  //console.log(log);
-  let userLog = await log.json();
-  console.log(userLog);
-
-  if (log.status === 200) {
-    //Stockage du Token //
-    window.sessionStorage.setItem("Token", JSON.stringify(userLog.token));
-    console.log(window.sessionStorage);
-
-    // window.location.href = "./index.html";
-  } else if (log.status === 404 || log.status === 401) {
-    alert("Email ou Mot de passe incorrect");
-  }
-};
-let token = window.sessionStorage.getItem("Token");
-console.log(token);*/
