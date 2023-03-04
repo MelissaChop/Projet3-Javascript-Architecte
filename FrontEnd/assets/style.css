@@ -411,9 +411,9 @@ footer nav ul {
 
 /* Affichage des boutons lors de la connexion Utilisateur */
 
-#barre {
+/*#barre {
   display: none;
-}
+}*/
 
 #modifProfil,
 #modifArticle,
@@ -436,6 +436,10 @@ footer nav ul {
 }
 
 /* Modal */
+
+#barre {
+  z-index: 9999;
+}
 
 .modal {
   position: fixed;
