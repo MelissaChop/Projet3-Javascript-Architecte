@@ -57,17 +57,17 @@ document.querySelector(".loginForm").onsubmit = function (event) {
       //let token = window.sessionStorage.getItem("Token");
       //console.log(token);
 
-      //window.location.href = "./index.html";
-
-      const toDelete = document.getElementById("toDelete");
-      if (!toDelete) {
-        return;
-      } else {
-        toDelete.remove();
-      }
+      window.location.href = "./index.html";
     })
 
     .catch((error) => console.error(error));
+
+  const toDelete = document.getElementById("toDelete");
+  if (!toDelete) {
+    return;
+  } else {
+    toDelete.remove();
+  }
 };
 
 /*document.querySelector(".loginForm").onsubmit = async function (event) {
