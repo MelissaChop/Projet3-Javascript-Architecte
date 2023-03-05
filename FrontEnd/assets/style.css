@@ -137,15 +137,18 @@ body {
 header {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
 }
 #barre {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 59px;
-  width: 100%;
+  width: 1440px;
   background-color: black;
   margin: 0;
+  margin-left: -9.2%;
+  margin-right: -9.2%;
 }
 
 #enTete {
@@ -230,9 +233,9 @@ a,
 }
 
 #modifProfil {
-  margin-left: 25%;
+  padding-left: 15%;
   margin-top: 1%;
-  min-width: 100%;
+  min-width: 90%;
   max-width: 332px;
 }
 
@@ -455,9 +458,10 @@ footer nav ul {
 
 .modal-wrapper {
   overflow: auto;
-  min-width: 65%;
-  max-width: calc(100vw - 30%);
-  max-height: calc(100vh - 30%);
+  max-width: 43%;
+  max-height: 50%;
+  width: calc(100vw - 30%);
+  height: calc(100vh - 30%);
   padding: 3%;
   background-color: white;
   display: flex;
@@ -480,6 +484,8 @@ footer nav ul {
   color: black;
   align-items: center;
   margin-top: 10px;
+  font-size: 2em;
+  margin-bottom: 2%;
 }
 
 .addPictures {
@@ -512,22 +518,30 @@ footer nav ul {
   display: flex;
   flex-direction: column;
   border-top: 1px solid #b3b3b3;
-  margin: 6.5% 17% 6.5% 17%;
+  /* margin: 6.5% 17% 6.5% 17%;*/
 }
 
 #galleryModal {
-  width: 100%;
+  /*width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+  overflow: auto;*/
+  width: 100%;
+  display: flex;
+  gap: 2%;
+  align-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   overflow: auto;
+  object-fit: cover;
 }
 
 #galleryModal img {
   width: 100%;
 }
 
-#galleryModal .figure {
+#galleryModal figure {
   width: 30%;
 }
