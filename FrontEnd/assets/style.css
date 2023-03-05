@@ -276,6 +276,7 @@ a,
   color: black;
   font-family: "Work sans";
   margin-left: 57px;
+  text-decoration: none;
 }
 
 #modifProjet:hover {
