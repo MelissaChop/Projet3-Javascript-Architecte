@@ -1,45 +1,53 @@
-const worksD = await fetch("http://localhost:5678/api/works");
+const worksD = await fetch("http://localhost:5678/api/works", {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    "Content-Type": "multipart/form-data",
+  },
+});
 //console.log(worksD);
 
 /*Mettre au format JSON */
-const worksDelete = await worksD.json();
-//console.log(worksDelete);
+const works = await worksD.json();
+//console.log(worksD);
 
 /* Creer fonction Portfolio*/
-async function displayWorksD(worksDelete) {
+async function displayWorksD(works) {
   /*Choix de l'emplacement de la balise HTML*/
 
-  const divGallery = document.querySelector(".galleryModal");
-  //console.log(divGallery);
+  const divGallery = document.querySelector("#galleryModal");
+  console.log(divGallery);
 
   /*Boucle dans le tableau JSON */
-  for (let i = 0; i < worksDelete.length; i++) {
+  for (let i = 0; i < works.length; i++) {
     // console.log(worksDelete[i].title + ", " + worksDelete[i].imageUrl);
 
     /*Creation des balises HTML*/
 
     const worksElement = document.createElement("figure");
-    worksElement.dataset.id = worksDelete[i].id;
-    worksElement.dataset.categoryId = worksDelete[i].categoryId;
+    worksElement.dataset.id = works[i].id;
+    worksElement.dataset.categoryId = works[i].categoryId;
     //console.log(worksElement);
 
     const image = document.createElement("img");
-    image.src = worksDelete[i].imageUrl;
+    image.src = works[i].imageUrl;
     image.crossOrigin = "anonymous";
-    image.alt = worksDelete[i].title;
+    image.alt = works[i].title;
     //console.log(image);
 
-    const titleElement = document.createElement("figcaption");
-    titleElement.innerText = worksDelete[i].title;
+    /* const titleElement = document.createElement("figcaption");
+    titleElement.innerText = works[i].title;*/
     //console.log(titleElement);
 
     /* Lien entre les blocs enfant et parent*/
     worksElement.appendChild(image);
     //console.log(worksElement);
 
-    worksElement.appendChild(titleElement);
+    //worksElement.appendChild(titleElement);
 
     divGallery.appendChild(worksElement);
     //console.log(divGallery);
+    // }
   }
 }
+displayWorksD(works);

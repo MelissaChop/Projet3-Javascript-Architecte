@@ -456,8 +456,8 @@ footer nav ul {
 .modal-wrapper {
   overflow: auto;
   min-width: 65%;
-  max-width: calc(100vw - 15%);
-  max-height: calc(100vh - 15%);
+  max-width: calc(100vw - 30%);
+  max-height: calc(100vh - 30%);
   padding: 3%;
   background-color: white;
   display: flex;
@@ -513,4 +513,21 @@ footer nav ul {
   flex-direction: column;
   border-top: 1px solid #b3b3b3;
   margin: 6.5% 17% 6.5% 17%;
+}
+
+#galleryModal {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  overflow: auto;
+}
+
+#galleryModal img {
+  width: 100%;
+}
+
+#galleryModal .figure {
+  width: 30%;
 }
