@@ -448,7 +448,6 @@ footer nav ul {
   opacity: 10%;
   visibility: hidden;
   transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .modal-content {
@@ -478,7 +477,6 @@ footer nav ul {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
 #titleModal {
@@ -539,7 +537,6 @@ footer nav ul {
   opacity: 10%;
   visibility: hidden;
   transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .modal-content2 {
@@ -569,5 +566,4 @@ footer nav ul {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
