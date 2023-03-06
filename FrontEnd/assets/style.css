@@ -567,3 +567,14 @@ footer nav ul {
   visibility: visible;
   transform: scale(1);
 }
+
+.allerRetour {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-light {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+}
