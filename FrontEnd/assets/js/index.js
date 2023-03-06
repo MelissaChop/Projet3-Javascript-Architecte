@@ -121,7 +121,7 @@ displayWorks(works);
 const connexion = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
 const gallery = document.getElementById("gallery");
-console.log(connexion);
+//console.log(connexion);
 
 let enTete = document.getElementById("#barre");
 if (connexion != null) {

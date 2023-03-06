@@ -1,56 +1,55 @@
-/*const worksD = await fetch("http://localhost:5678/api/works", {
+const worksD = await fetch("http://localhost:5678/api/works", {
   method: "GET",
   headers: {
     accept: "application/json",
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
   },
-});*/
+});
 //console.log(worksD);
 
 /*Mettre au format JSON */
-/*const works = await worksD.json();*/
-//console.log(worksD);
+const works = await worksD.json();
+//console.log(works);
 
 /* Creer fonction Portfolio*/
-/*async function displayWorksD(works) {*/
-/*Choix de l'emplacement de la balise HTML*/
+async function displayWorksD(works) {
+  /*Choix de l'emplacement de la balise HTML*/
 
-/*const divGallery = document.querySelector("#galleryModal");
-  console.log(divGallery);*/
+  const divGalleryD = document.querySelector(".galleryModal");
+  console.log(divGalleryD);
 
-/*Boucle dans le tableau JSON */
-/* for (let i = 0; i < works.length; i++) {
-    // console.log(worksDelete[i].title + ", " + worksDelete[i].imageUrl);*/
+  /*Boucle dans le tableau JSON */
+  for (let i = 0; i < works.length; i++) {
+    //console.log(works[i].title + ", " + works[i].imageUrl);
 
-/*Creation des balises HTML*/
+    /*Creation des balises HTML*/
 
-/*const worksElement = document.createElement("figure");
+    const worksElement = document.createElement("figure");
     worksElement.dataset.id = works[i].id;
     worksElement.dataset.categoryId = works[i].categoryId;
-    //console.log(worksElement);
+    //console.log(worksElement);*/
 
     const image = document.createElement("img");
     image.src = works[i].imageUrl;
     image.crossOrigin = "anonymous";
     image.alt = works[i].title;
-    //console.log(image);*/
+    console.log(image);
 
-/* const titleElement = document.createElement("figcaption");
-    titleElement.innerText = works[i].title;*/
-//console.log(titleElement);
+    const titleElement = document.createElement("figcaption");
+    titleElement.innerText = "éditer";
+    //console.log(titleElement);
 
-/* Lien entre les blocs enfant et parent*/
-/*worksElement.appendChild(image);
+    /* Lien entre les blocs enfant et parent*/
+    worksElement.appendChild(image);
     //console.log(worksElement);
 
-    //worksElement.appendChild(titleElement);
+    worksElement.appendChild(titleElement);
 
-    divGallery.appendChild(worksElement);
+    divGalleryD.appendChild(worksElement);
     //console.log(divGallery);
-    // }
   }
 }
-displayWorksD(works);*/
+displayWorksD(works);
 
 // Aller à la page suivante
 /*function nextPage() {
