@@ -1,18 +1,18 @@
-const worksD = await fetch("http://localhost:5678/api/works", {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    "Content-Type": "application/json",
-  },
-});
-//console.log(worksD);
+async function displayWorksD() {
+  const worksD = await fetch("http://localhost:5678/api/works", {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  //console.log(worksD);
 
-/*Mettre au format JSON */
-const works = await worksD.json();
-//console.log(works);
+  /*Mettre au format JSON */
+  const works = await worksD.json();
+  //console.log(works);
 
-/* Creer fonction Portfolio*/
-async function displayWorksD(works) {
+  /* Creer fonction Portfolio*/
   /*Choix de l'emplacement de la balise HTML*/
 
   const divGalleryD = document.querySelector(".galleryModal");
@@ -49,7 +49,7 @@ async function displayWorksD(works) {
     //console.log(divGallery);
   }
 }
-displayWorksD(works);
+displayWorksD();
 
 // Aller à la page suivante
 /*function nextPage() {
