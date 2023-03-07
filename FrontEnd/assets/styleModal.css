@@ -187,9 +187,28 @@
   border-radius: 2px;
   top: 6px;
   left: 55px;
+  cursor: pointer;
 }
 
 .boxGarbage {
   position: absolute;
   z-index: 2;
+}
+
+.iconeExpand {
+  cursor: pointer;
+  background-color: black;
+  position: absolute;
+  z-index: 2;
+  padding: 3px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  width: 17px;
+  top: 6px;
+  left: 35px;
+}
+
+.boxExpand {
+  z-index: 2;
+  position: absolute;
 }

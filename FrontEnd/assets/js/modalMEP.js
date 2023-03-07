@@ -40,7 +40,7 @@ async function displayWorksD() {
     titleElement.innerText = "éditer";
     //console.log(titleElement);
 
-    // ICONE
+    // ICONE Garbage
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("boxGarbage");
 
@@ -52,7 +52,20 @@ async function displayWorksD() {
 
     worksElement.appendChild(imgDiv);
 
-    console.log(iconeGarbage);
+    //console.log(iconeGarbage);
+
+    //ICONE expand
+
+    let iconDiv = document.createElement("div");
+    iconDiv.classList.add("boxExpand");
+
+    let iconeExpand = document.createElement("img");
+    iconeExpand.src = "./assets/icons/XMLID_71_.png";
+    iconeExpand.classList.add("iconeExpand");
+
+    iconDiv.appendChild(iconeExpand);
+
+    worksElement.appendChild(iconDiv);
 
     /* Lien entre les blocs enfant et parent*/
     worksElement.appendChild(image);
