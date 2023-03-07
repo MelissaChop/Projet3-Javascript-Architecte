@@ -89,9 +89,34 @@ async function displayWorksD() {
     });
 
     //DELETE//
+    const token = window.sessionStorage.getItem("Token");
+    //console.log(token);
+
     iconeGarbage.addEventListener("click", function () {
       let worksDel = worksElement.dataset.id;
       console.log(worksDel);
+
+      const Delete = fetch("http://localhost:5678/api/works/${id}", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token.id}`,
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((reponse) => {
+          if (!reponse.ok) {
+            if (reponse.status === 401) {
+            }
+            throw new Error("Erreur détectée!");
+          }
+          return reponse.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+
+        .catch((error) => console.error(error));
     });
   }
 }
