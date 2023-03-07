@@ -90,31 +90,3 @@ async function displayWorksD() {
   }
 }
 displayWorksD();
-
-// Aller à la page suivante
-/*function nextPage() {
-  // Trouver la page actuelle
-  const currentPage = document.querySelector(".modal-page:visible");
-  // Trouver la page suivante
-  const nextPage = currentPage.nextElementSibling;
-  // Cacher la page actuelle et afficher la page suivante
-  currentPage.style.display = "none";
-  nextPage.style.display = "block";
-}*/
-
-// Aller à la page précédente
-/*function previousPage() {
-  // Trouver la page actuelle
-  const currentPage = document.querySelector(".modal-page:visible");
-  // Trouver la page précédente
-  const previousPage = currentPage.previousElementSibling;
-  // Cacher la page actuelle et afficher la page précédente
-  currentPage.style.display = "none";
-  previousPage.style.display = "block";
-}*/
-
-// Écouter les événements de clic sur les boutons
-/*document.getElementById("addPictures").addEventListener("click", nextPage);
-document
-  .getElementById("fa-house-person-return")
-  .addEventListener("click", previousPage);*/
