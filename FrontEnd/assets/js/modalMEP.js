@@ -75,6 +75,18 @@ async function displayWorksD() {
 
     divGalleryD.appendChild(worksElement);
     //console.log(divGallery);
+
+    // Ajoutez un gestionnaire d'événements pour l'événement mouseover sur l'élément cible
+    worksElement.addEventListener("mouseover", function () {
+      // Affichez l'élément à afficher
+      iconDiv.style.display = "block";
+    });
+
+    // Ajoutez un gestionnaire d'événements pour l'événement mouseout sur l'élément cible
+    worksElement.addEventListener("mouseout", function () {
+      // Masquez l'élément à afficher
+      iconDiv.style.display = "none";
+    });
   }
 }
 displayWorksD();

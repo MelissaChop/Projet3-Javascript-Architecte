@@ -211,4 +211,5 @@
 .boxExpand {
   z-index: 2;
   position: absolute;
+  display: none;
 }
