@@ -96,10 +96,10 @@ async function displayWorksD() {
       let worksDel = worksElement.dataset.id;
       console.log(worksDel);
 
-      const Delete = fetch("http://localhost:5678/api/works/${id}", {
+      const Delete = fetch("http://localhost:5678/api/works/{id}", {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token.id}`,
+          Authorization: `Bearer ${token}`,
           accept: "application/json",
           "Content-Type": "application/json",
         },
@@ -112,6 +112,7 @@ async function displayWorksD() {
           }
           return reponse.json();
         })
+
         .then((data) => {
           console.log(data);
         })
