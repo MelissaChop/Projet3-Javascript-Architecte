@@ -93,6 +93,7 @@ window.addEventListener("click", windowOnClick);
 var modal2 = document.querySelector(".modal2");
 var trigger2 = document.querySelector(".addPictures");
 var closeButton2 = document.querySelector(".close-button2");
+var retour = document.querySelector("#return");
 
 function toggleModal2() {
   modal2.classList.toggle("show-modal2");
@@ -115,3 +116,7 @@ window.addEventListener("keydown", function (e) {
 trigger2.addEventListener("click", toggleModal2);
 closeButton2.addEventListener("click", toggleModal2);
 window.addEventListener("click", windowOnClick2);
+retour.addEventListener("click", function () {
+  modal2.classList.remove("show-modal2");
+  modal.classList.toggle("show-modal");
+});

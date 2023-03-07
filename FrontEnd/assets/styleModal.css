@@ -168,6 +168,10 @@
   justify-content: space-between;
 }
 
+#return {
+  cursor: pointer;
+}
+
 #titleModal2 {
   font-family: "Work Sans";
   font-weight: 400;
