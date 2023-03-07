@@ -16,7 +16,7 @@ async function displayWorksD() {
   /*Choix de l'emplacement de la balise HTML*/
 
   const divGalleryD = document.querySelector(".galleryModal");
-  console.log(divGalleryD);
+  // console.log(divGalleryD);
 
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
@@ -33,11 +33,26 @@ async function displayWorksD() {
     image.src = works[i].imageUrl;
     image.crossOrigin = "anonymous";
     image.alt = works[i].title;
-    console.log(image);
+    image.classList.add("imgWorks");
+    //console.log(image);
 
     const titleElement = document.createElement("figcaption");
     titleElement.innerText = "éditer";
     //console.log(titleElement);
+
+    // ICONE
+    let imgDiv = document.createElement("div");
+    imgDiv.classList.add("boxGarbage");
+
+    let iconeGarbage = document.createElement("img");
+    iconeGarbage.src = "./assets/icons/Vector.png";
+    iconeGarbage.classList.add("iconeGarbage");
+
+    imgDiv.appendChild(iconeGarbage);
+
+    worksElement.appendChild(imgDiv);
+
+    console.log(iconeGarbage);
 
     /* Lien entre les blocs enfant et parent*/
     worksElement.appendChild(image);

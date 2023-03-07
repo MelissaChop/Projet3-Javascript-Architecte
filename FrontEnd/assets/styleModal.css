@@ -73,9 +73,10 @@
     object-fit: cover;*/
 }
 
-.galleryModal img {
+.imgWorks {
   position: relative;
   width: 78px;
+  z-index: 1;
 }
 
 .galleryModal figcaption {
@@ -174,4 +175,21 @@
   align-self: center;
   margin-top: 10px;
   font-size: 2em;
+}
+
+/*ICONES */
+.iconeGarbage {
+  background-color: black;
+  position: absolute;
+  z-index: 2;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  top: 6px;
+  left: 55px;
+}
+
+.boxGarbage {
+  position: absolute;
+  z-index: 2;
 }
