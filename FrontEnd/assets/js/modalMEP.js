@@ -87,6 +87,12 @@ async function displayWorksD() {
       // Masquez l'élément à afficher
       iconDiv.style.display = "none";
     });
+
+    //DELETE//
+    iconeGarbage.addEventListener("click", function () {
+      let worksDel = worksElement.dataset.id;
+      console.log(worksDel);
+    });
   }
 }
 displayWorksD();
