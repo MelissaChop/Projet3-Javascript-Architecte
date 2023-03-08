@@ -107,18 +107,16 @@ async function displayWorksD() {
         .then((reponse) => {
           if (!reponse.ok) {
             if (reponse.status === 401) {
+              console.log(error);
               //window.location.href = "./login.html";
             }
-            throw new Error("Erreur détectée!");
           }
           return reponse.json();
         })
 
-        .then((data) => {
-          console.log(data);
-        })
-
-        .catch((error) => console.error(error));
+        .catch((error) =>
+          console.error("Impossible d'effectuer la suppression")
+        );
     });
   }
 }
