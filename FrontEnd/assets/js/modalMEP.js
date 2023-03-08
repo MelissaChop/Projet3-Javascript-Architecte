@@ -99,7 +99,7 @@ async function displayWorksD() {
       const Delete = fetch("http://localhost:5678/api/works/{id}", {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ` + token,
           accept: "application/json",
           "Content-Type": "application/json",
         },
@@ -107,6 +107,7 @@ async function displayWorksD() {
         .then((reponse) => {
           if (!reponse.ok) {
             if (reponse.status === 401) {
+              //window.location.href = "./login.html";
             }
             throw new Error("Erreur détectée!");
           }
