@@ -110,6 +110,7 @@ async function displayWorksD() {
               console.log(error);
               //window.location.href = "./login.html";
             }
+            throw new Error("Erreur détectée!");
           }
           return reponse.json();
         })
