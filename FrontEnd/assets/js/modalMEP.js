@@ -89,14 +89,14 @@ async function displayWorksD() {
     });
 
     //DELETE//
-    const token = window.localStorage.getItem("Token");
-    //console.log(token);
+    const token = window.sessionStorage.getItem("Token");
+    console.log(token);
 
     iconeGarbage.addEventListener("click", function () {
       let worksDel = worksElement.dataset.id;
       console.log(worksDel);
 
-      const Delete = fetch("http://localhost:5678/api/works/${works.id}", {
+      const Delete = fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
