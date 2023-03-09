@@ -51,8 +51,8 @@ document.querySelector(".loginForm").onsubmit = function (event) {
       console.log(data);
 
       console.log(data.token); // Vérifiez si data.token est correctement défini
-      window.sessionStorage.setItem("Token", JSON.stringify(data.token));
-      window.sessionStorage.setItem("User", JSON.stringify(data.userId));
+      window.localStorage.setItem("Token", JSON.stringify(data.token));
+      window.localStorage.setItem("User", JSON.stringify(data.userId));
 
       console.log(window.sessionStorage);
 

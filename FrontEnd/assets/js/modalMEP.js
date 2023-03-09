@@ -89,35 +89,36 @@ async function displayWorksD() {
     });
 
     //DELETE//
-    const token = window.sessionStorage.getItem("Token");
+    const token = window.localStorage.getItem("Token");
     //console.log(token);
 
     iconeGarbage.addEventListener("click", function () {
       let worksDel = worksElement.dataset.id;
       console.log(worksDel);
 
-      const Delete = fetch("http://localhost:5678/api/works/{id}", {
+      const Delete = fetch("http://localhost:5678/api/works/${works.id}", {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ` + token,
+          Authorization: `Bearer ${token}`,
           accept: "application/json",
           "Content-Type": "application/json",
         },
       })
         .then((reponse) => {
-          if (!reponse.ok) {
-            if (reponse.status === 401) {
-              console.log(error);
-              //window.location.href = "./login.html";
-            }
-            throw new Error("Erreur détectée!");
+          if (reponse.status === 401) {
+            console.error("Impossible d'effectuer la suppression");
+            //window.location.href = "./login.html";
           }
           return reponse.json();
         })
 
         .catch((error) =>
           console.error("Impossible d'effectuer la suppression")
-        );
+        )
+
+        .then((data) => {
+          console.log(data);
+        });
     });
   }
 }
