@@ -123,33 +123,6 @@ async function displayWorksD() {
           );
         });
     });
-
-    // Sélectionnez l'élément allDelete et ajoutez un écouteur d'événement "click"
-    const allDelete = document.querySelector(".removeGallery");
-    allDelete.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      // Récupérez le token d'authentification depuis la sessionStorage
-      const token = window.sessionStorage.getItem("User");
-      const tokenObj = JSON.parse(token);
-
-      // Parcourez tous les éléments de la liste des works et supprimez-les individuellement
-      const worksElements = document.querySelectorAll(".works");
-      worksElements.forEach((worksElement) => {
-        let worksDelT = worksElement.dataset.id;
-
-        fetch(`http://localhost:5678/api/works/${worksDelT}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${tokenObj.token}`,
-          },
-        });
-      });
-
-      // Videz la galerie après avoir supprimé tous les éléments
-      document.querySelector(".gallery").innerHTML = "";
-      document.querySelector(".galleryModal").innerHTML = "";
-    });
   }
 }
 
