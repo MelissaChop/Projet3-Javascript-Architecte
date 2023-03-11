@@ -293,4 +293,18 @@
   height: 51px;
   border-color: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  color: #6c6c6c;
+  padding-left: 16px;
+}
+
+#title {
+  border: white;
+  outline: none;
+}
+
+.addPictures[disabled] {
+  background-color: #a7a7a7;
+  width: 237px;
+  height: 36px;
+  cursor: not-allowed;
 }
