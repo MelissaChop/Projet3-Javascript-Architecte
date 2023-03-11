@@ -1,13 +1,12 @@
-async function displayWorks() {
-  /* Appel API Works*/
+const worksApi = await fetch("http://localhost:5678/api/works");
+//console.log(worksApi);
 
-  const worksApi = await fetch("http://localhost:5678/api/works");
-  //console.log(worksApi);
+/*Mettre au format JSON */
+const works = await worksApi.json();
+//console.log(works);
 
-  /*Mettre au format JSON */
-  const works = await worksApi.json();
-  //console.log(works);
-
+/* Appel API Works*/
+async function displayWorks(works) {
   /* Creer fonction Portfolio*/
 
   /*Choix de l'emplacement de la balise HTML*/
@@ -82,7 +81,9 @@ async function displayCategories(categories) {
 
     const buttonCategories = document.createElement("button");
     buttonCategories.innerText = categories[i].name;
-    buttonCategories.classList.add("choice_pictures"); /*Ajout class*/
+    buttonCategories.classList.add("choice_pictures");
+    buttonCategories.dataset.id = categories[i].id;
+    /*Ajout class*/
     if (categories[i].id === 0) {
       buttonCategories.classList.add("active");
     }
@@ -116,7 +117,7 @@ async function displayCategories(categories) {
 
 displayCategories(categories);
 //console.log(displayCategories);
-displayWorks();
+displayWorks(works);
 //console.log(displayWorks);
 
 const connexion = window.sessionStorage.getItem("User");
