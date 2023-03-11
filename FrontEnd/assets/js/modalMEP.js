@@ -149,7 +149,6 @@ async function displayWorksD() {
       // Videz la galerie après avoir supprimé tous les éléments
       document.querySelector(".gallery").innerHTML = "";
       document.querySelector(".galleryModal").innerHTML = "";
-      displayWorks(worksDelT);
     });
   }
 }
