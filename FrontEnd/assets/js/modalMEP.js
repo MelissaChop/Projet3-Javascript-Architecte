@@ -89,37 +89,41 @@ async function displayWorksD() {
     });
 
     //DELETE//
-    const token = window.sessionStorage.getItem("Token");
-    console.log(token);
+    const token = window.sessionStorage.getItem("User");
+    const tokenObj = JSON.parse(token);
+    //console.log(tokenObj);
 
-    iconeGarbage.addEventListener("click", function () {
+    iconeGarbage.addEventListener("click", function (event) {
+      event.preventDefault();
       let worksDel = worksElement.dataset.id;
-      console.log(worksDel);
+      //console.log(worksDel);
 
-      const Delete = fetch(`http://localhost:5678/api/works/${worksDel}`, {
+      fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token}`,
-          accept: "application/json",
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenObj.token}`,
         },
       })
         .then((reponse) => {
           if (reponse.status === 401) {
             console.error("Impossible d'effectuer la suppression");
-            //window.location.href = "./login.html";
-          }
-          return reponse.json();
+            window.location.href = "./login.html";
+          } /*else if (reponse.status === 204) {
+            console.log("Erreur");
+            return; // Ajout de l'instruction de retour ici
+          }*/
+          document.querySelector(".gallery").innerHTML = "";
+          displayWorks(worksDel);
+          return false;
         })
-
-        .catch((error) =>
-          console.error("Impossible d'effectuer la suppression")
-        )
-
-        .then((data) => {
-          console.log(data);
+        .catch((error) => {
+          console.error(
+            "Une erreur est survenue lors de la suppression",
+            error
+          );
         });
     });
   }
 }
+
 displayWorksD();
