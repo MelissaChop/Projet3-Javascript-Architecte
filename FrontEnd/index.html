@@ -105,21 +105,27 @@
         </aside>
         <!--2nd-->
         <aside class="modal2">
-          <form class="modal-content2">
+          <form class="modal-content2" method="post">
             <div id="allerRetour">
               <i class="fa-solid fa-arrow-left" id="return"></i>
               <span class="close-button2">&times;</span>
             </div>
             <h2 id="titleModal2">Ajout photo</h2>
             <div class="addPicture">
-              <i class="fa-regular fa-image"></i>
+              <i class="fa-regular fa-image" id="fondImage"></i>
+              <label for="ajoutPhoto" class="ajoutPhoto">+ Ajouter photo</label>
+              <input
+                type="file"
+                id="ajoutPhoto"
+                name="image"
+                accept="image/png, image/jpeg" />
+              <p class="descriptionImage">jpg, png : 4mo max</p>
             </div>
-            <div class="titlePicture">
-              Titre <br />
-              <input type="text" />
-            </div>
-            <div class="categoryPicture">
-              Catégorie <br />
+            <div class="infoPhoto">
+              <label for="title" id="infoTitle"> Titre </label>
+              <input type="text" id="title" />
+
+              <label for="selectionCategorie" id="infoTitle"> Catégorie </label>
               <select name="categories" id="selectionCategorie">
                 <option id="0"></option>
                 <option id="1">Objets</option>

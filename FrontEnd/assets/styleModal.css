@@ -226,3 +226,71 @@
   position: absolute;
   display: none;
 }
+
+.addPicture {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  background-color: #e8f1f6;
+  border-radius: 3px;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  margin-top: 36px;
+}
+
+#fondImage {
+  font-size: 58px;
+  color: #b9c5cc;
+  font-weight: 100;
+  margin-top: 28px;
+}
+
+.ajoutPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 173px;
+  height: 36px;
+  background-color: #cbd6dc;
+  color: #306685;
+  border-radius: 50px;
+  margin-top: 21px;
+}
+
+#ajoutPhoto {
+  display: none;
+}
+
+.descriptionImage {
+  color: #444444;
+  font-size: 10px;
+  font-family: "Work Sans";
+  font-weight: 400;
+  margin-top: 7px;
+  margin-bottom: 19px;
+}
+
+.infoPhoto {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  align-self: center;
+  margin-top: 9px;
+  font-weight: 500;
+  color: #3d3d3d;
+}
+
+#infoTitle {
+  margin-bottom: 10px;
+  margin-top: 21px;
+}
+
+#title,
+#selectionCategorie {
+  width: 420px;
+  height: 51px;
+  border-color: #ffffff;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
