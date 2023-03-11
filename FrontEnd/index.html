@@ -105,17 +105,33 @@
         </aside>
         <!--2nd-->
         <aside class="modal2">
-          <div class="modal-content2">
+          <form class="modal-content2">
             <div id="allerRetour">
               <i class="fa-solid fa-arrow-left" id="return"></i>
               <span class="close-button2">&times;</span>
             </div>
             <h2 id="titleModal2">Ajout photo</h2>
+            <div class="addPicture">
+              <i class="fa-regular fa-image"></i>
+            </div>
+            <div class="titlePicture">
+              Titre <br />
+              <input type="text" />
+            </div>
+            <div class="categoryPicture">
+              Catégorie <br />
+              <select name="categories" id="selectionCategorie">
+                <option id="0"></option>
+                <option id="1">Objets</option>
+                <option id="2">Appartements</option>
+                <option id="3">Hotels & restaurants</option>
+              </select>
+            </div>
             <div class="buttonModalFin2">
               <div id="pictures"><!--Images--></div>
               <button type="button" class="addPictures">Valider</button>
             </div>
-          </div>
+          </form>
         </aside>
 
         <!--FIN MODAL-->
@@ -152,6 +168,8 @@
     <script type="module" src="./assets/js/index.js" defer></script>
     <script type="module" src="./assets/js/modal.js" defer></script>
     <script type="module" src="./assets/js/modalMEP.js" defer></script>
+    <script type="module" src="./assets/js/modalAdd.js" defer></script>
+
     <!--<script src=""
 	crossorigin="anonymous" defer></script>-->
   </body>
