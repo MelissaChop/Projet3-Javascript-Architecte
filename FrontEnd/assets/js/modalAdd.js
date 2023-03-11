@@ -14,7 +14,7 @@ function addPicture(e) {
 }*/
 
 const token = window.sessionStorage.getItem("User");
-const tokenObj = JSON.parse(token);
+//const tokenObj = JSON.parse(token);
 //console.log(tokenObj);
 
 let addPicturesForm = document.querySelector(".modal-content2");
@@ -22,12 +22,12 @@ addPicturesForm.onsubmit = async (e) => {
   e.preventDefault();
   // console.log("form submit");
 
-  let response = await fetch(`http://localhost:5678/api/works/${id}`, {
+  let response = await fetch(`http://localhost:5678/api/works`, {
     method: "POST",
     headers: {
       "Content-Type": "multipart/form-data",
       Accept: "application/json",
-      Authorization: `Bearer ${token.token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: new FormData(addPicturesForm),
   });
