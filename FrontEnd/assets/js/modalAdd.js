@@ -12,28 +12,35 @@ function addPicture(e) {
 
   console.log("Pictures", { titre, categ });
 }*/
+import { displayWorksD } from "./modalMEP.js";
+import { displayWorks } from "./index.js";
 
 const token = window.sessionStorage.getItem("User");
-//const tokenObj = JSON.parse(token);
+const tokenObj = JSON.parse(token).token;
 //console.log(tokenObj);
 
 let addPicturesForm = document.querySelector(".modal-content2");
 addPicturesForm.onsubmit = async (e) => {
   e.preventDefault();
-  // console.log("form submit");
+  //console.log("form submit");
 
-  let response = await fetch(`http://localhost:5678/api/works`, {
+  let response = await fetch(`http://localhost:5678/api/works/`, {
     method: "POST",
     headers: {
-      "Content-Type": "multipart/form-data",
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
+      //"Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${tokenObj}`,
     },
     body: new FormData(addPicturesForm),
   });
   let result = await response.json();
 
   alert(result.message);
+
+  document.querySelector(".galleryModal").innerHTML = "";
+  displayWorksD(addPicturesForm);
+
+  document.querySelector(".gallery").innerHTML = "";
+  displayWorks(addPicturesForm);
 };
 
 /*let formData = new FormData([form]);

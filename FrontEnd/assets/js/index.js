@@ -1,12 +1,12 @@
-const worksApi = await fetch("http://localhost:5678/api/works");
-//console.log(worksApi);
-
-/*Mettre au format JSON */
-const works = await worksApi.json();
-//console.log(works);
-
 /* Appel API Works*/
-async function displayWorks(works) {
+export async function displayWorks() {
+  const worksApi = await fetch("http://localhost:5678/api/works");
+  //console.log(worksApi);
+
+  /*Mettre au format JSON */
+  const works = await worksApi.json();
+  //console.log(works);
+
   /* Creer fonction Portfolio*/
 
   /*Choix de l'emplacement de la balise HTML*/
@@ -117,7 +117,7 @@ async function displayCategories(categories) {
 
 displayCategories(categories);
 //console.log(displayCategories);
-displayWorks(works);
+displayWorks();
 //console.log(displayWorks);
 
 const connexion = window.sessionStorage.getItem("User");

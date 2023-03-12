@@ -1,4 +1,4 @@
-async function displayWorksD() {
+export async function displayWorksD() {
   const worksD = await fetch("http://localhost:5678/api/works", {
     method: "GET",
     headers: {
