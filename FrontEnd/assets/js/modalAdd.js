@@ -44,7 +44,18 @@ addPicturesForm.onsubmit = async (e) => {
       Authorization: `Bearer ${tokenObj}`,
     },
     body: addImage,
-  });
+  })
+    .then((reponse) => {
+      if (
+        addImage.get("#image") === true ||
+        addImage.get("#title") === true ||
+        addImage.get("#selectionCategorie2") === true
+      ) {
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   document.querySelector(".galleryModal").innerHTML = "";
   displayWorksD(addPicturesForm);
