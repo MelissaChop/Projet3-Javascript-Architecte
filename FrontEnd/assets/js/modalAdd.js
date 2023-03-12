@@ -22,19 +22,15 @@ const tokenObj = JSON.parse(token).token;
 let addPicturesForm = document.querySelector(".modal-content2");
 addPicturesForm.onsubmit = async (e) => {
   e.preventDefault();
-  //console.log("form submit");
+  console.log("form submit");
 
-  /*let response = await*/ fetch(`http://localhost:5678/api/works/`, {
+  fetch(`http://localhost:5678/api/works/`, {
     method: "POST",
     headers: {
-      //"Content-Type": "multipart/form-data",
       Authorization: `Bearer ${tokenObj}`,
     },
     body: new FormData(addPicturesForm),
   });
-  //let result = await response.json();
-
-  alert(result.message);
 
   document.querySelector(".galleryModal").innerHTML = "";
   displayWorksD(addPicturesForm);
