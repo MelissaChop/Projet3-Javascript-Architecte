@@ -110,29 +110,18 @@
               <i class="fa-solid fa-arrow-left" id="return"></i>
               <span class="close-button2">&times;</span>
             </div>
-            <form
-              class="formModal"
-              method="post"
-              url="/upload-picture"
-              enctype="multipart/form-data">
+            <form id="formModal" method="post" enctype="multipart/form-data">
               <h2 id="titleModal2">Ajout photo</h2>
               <div class="addPicture">
                 <i
                   class="fa-regular fa-image"
                   id="fondImage"
                   src="#ajoutPhoto"></i>
-                <img
-                  src="#ajoutPhoto"
-                  alt=""
-                  id="image"
-                  style="max-width: 500px; margin-top: 20px" />
 
-                <label for="ajoutPhoto" class="ajoutPhoto"
-                  >+ Ajouter photo</label
-                >
+                <label for="image" class="ajoutPhoto">+ Ajouter photo</label>
                 <input
                   type="file"
-                  id="ajoutPhoto"
+                  id="image"
                   name="image"
                   accept=".png, .jpeg"
                   required />
@@ -144,24 +133,18 @@
                   <input type="text" id="title" name="title" />
                 </div>
                 <div id="infoTitle">
-                  <label for="selectionCategorie2" id="infoPicture">
-                    Catégorie
-                  </label>
-                  <select name="selectionCategorie2" id="selectionCategorie2">
-                    <option id="0"></option>
-                    <option id="1">Objets</option>
-                    <option id="2">Appartements</option>
-                    <option id="3">Hotels & restaurants</option>
+                  <label for="category" id="infoPicture"> Catégorie </label>
+                  <select name="category" id="selectionCategorie2">
+                    <option value="0"></option>
+                    <option value="1">Objets</option>
+                    <option value="2">Appartements</option>
+                    <option value="3">Hotels & restaurants</option>
                   </select>
                 </div>
               </div>
               <div class="buttonModalFin2">
                 <div id="pictures"><!--Images--></div>
-                <input
-                  type="submit"
-                  class="addPictures"
-                  value="Valider"
-                  disabled />
+                <input type="submit" class="addPictures" value="Valider" />
               </div>
             </form>
           </div>
