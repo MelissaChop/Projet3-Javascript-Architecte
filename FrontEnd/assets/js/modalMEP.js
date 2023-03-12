@@ -9,9 +9,8 @@ export async function displayWorksD() {
     },
   });
   //console.log(worksD);
-
   /*Mettre au format JSON */
-  const works = await worksD.json();
+  let works = await worksD.json();
   //console.log(works);
 
   /* Creer fonction Portfolio*/
@@ -105,28 +104,29 @@ export async function displayWorksD() {
         headers: {
           Authorization: `Bearer ${tokenObj.token}`,
         },
-      })
-        .then((reponse) => {
-          if (reponse.status === 401) {
-            console.error("Impossible d'effectuer la suppression");
-            window.location.href = "./login.html";
-          } /*else if (reponse.status === 204) {
+      }).then((reponse) => {
+        if (reponse.status === 401) {
+          console.error("Impossible d'effectuer la suppression");
+          window.location.href = "./login.html";
+        } /*else if (reponse.status === 204) {
             console.log("Erreur");
             return; // Ajout de l'instruction de retour ici
           }*/
-          document.querySelector(".galleryModal").innerHTML = "";
-          displayWorksD();
+        document.querySelector(".galleryModal").innerHTML = "";
+        displayWorksD();
 
-          document.querySelector(".gallery").innerHTML = "";
-          displayWorks();
-          return false;
-        })
-        .catch((error) => {
+        document.querySelector(".gallery").innerHTML = "";
+        displayWorks();
+
+        return false;
+      });
+      /*.catch((error) => {
           console.error(
             "Une erreur est survenue lors de la suppression",
             error
           );
-        });
+        });*/
+
       iconeGarbage.removeEventListener;
     });
   }

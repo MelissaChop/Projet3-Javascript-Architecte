@@ -1,15 +1,15 @@
 //import { displayWorksD } from "./modalMEP";
+
+let worksApi = await fetch("http://localhost:5678/api/works");
+//console.log(worksApi);
+
+/*Mettre au format JSON */
+let works = await worksApi.json();
+//console.log(works);
+
+/* Creer fonction Portfolio*/
 /* Appel API Works*/
-export async function displayWorks() {
-  let worksApi = await fetch("http://localhost:5678/api/works");
-  //console.log(worksApi);
-
-  /*Mettre au format JSON */
-  let works = await worksApi.json();
-  //console.log(works);
-
-  /* Creer fonction Portfolio*/
-
+export async function displayWorks(works) {
   /*Choix de l'emplacement de la balise HTML*/
 
   const divGallery = document.querySelector(".gallery");
@@ -118,7 +118,7 @@ async function displayCategories(categories) {
 
 displayCategories(categories);
 //console.log(displayCategories);
-displayWorks();
+displayWorks(works);
 //console.log(displayWorks);
 
 const connexion = window.sessionStorage.getItem("User");
