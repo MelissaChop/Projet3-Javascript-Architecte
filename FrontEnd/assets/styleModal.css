@@ -302,7 +302,11 @@
   outline: none;
 }
 
-/*.addPictures[disabled] {
+.formModal {
+  align-self: center;
+}
+
+.addPictures[disabled] {
   background-color: #a7a7a7;
   width: 237px;
   height: 36px;
