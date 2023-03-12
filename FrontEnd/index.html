@@ -105,7 +105,11 @@
         </aside>
         <!--2nd-->
         <aside class="modal2">
-          <form class="modal-content2" method="post" enctype="multipart/form-data">
+          <form
+            class="modal-content2"
+            method="post"
+            url="/upload-picture"
+            enctype="multipart/form-data">
             <div id="allerRetour">
               <i class="fa-solid fa-arrow-left" id="return"></i>
               <span class="close-button2">&times;</span>
@@ -116,12 +120,19 @@
                 class="fa-regular fa-image"
                 id="fondImage"
                 src="#ajoutPhoto"></i>
+              <img
+                src="#ajoutPhoto"
+                alt=""
+                id="image"
+                style="max-width: 500px; margin-top: 20px" />
+
               <label for="ajoutPhoto" class="ajoutPhoto">+ Ajouter photo</label>
               <input
                 type="file"
                 id="ajoutPhoto"
                 name="image"
-                accept="image/png, image/jpeg" />
+                accept=".png, .jpeg"
+                required />
               <p class="descriptionImage">jpg, png : 4mo max</p>
             </div>
             <div class="infoPhoto">

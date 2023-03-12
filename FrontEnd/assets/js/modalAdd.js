@@ -1,3 +1,4 @@
+//-----------------------------------------------------------------------------------
 // Ajout Pictures
 /*let addPicturesForm = document.querySelector(".modal-content2");
 addPicturesForm.addEventListener("submit", addPicture);
@@ -7,29 +8,42 @@ function addPicture(e) {
   //console.log("form submit"); ( NE FONCITONNE PAS)
 
   let formData = new FormData(addPicturesForm);
-  let titre = formData.get("#title");
+  titre = formData.get("#title");
+  console.log(titre);
   let categ = formData.get("#selectionCategorie2");
 
   console.log("Pictures", { titre, categ });
 }*/
+
+//-----------------------------------------------------------------------------------------
+
 import { displayWorksD } from "./modalMEP.js";
 import { displayWorks } from "./index.js";
 
+var icone = document.querySelector("#fondImage");
+var boutonAdd = document.querySelector("#ajoutPhoto");
+
 const token = window.sessionStorage.getItem("User");
 const tokenObj = JSON.parse(token).token;
+
 //console.log(tokenObj);
+
+boutonAdd.addEventListener("click", function (e) {
+  icone.classList.replace("fa-image", "image");
+});
 
 let addPicturesForm = document.querySelector(".modal-content2");
 addPicturesForm.onsubmit = async (e) => {
+  const addImage = new FormData(addPicturesForm);
+
   e.preventDefault();
-  console.log("form submit");
 
   fetch(`http://localhost:5678/api/works/`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${tokenObj}`,
     },
-    body: new FormData(addPicturesForm),
+    body: addImage,
   });
 
   document.querySelector(".galleryModal").innerHTML = "";
