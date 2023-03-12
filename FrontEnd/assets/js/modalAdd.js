@@ -24,7 +24,7 @@ addPicturesForm.onsubmit = async (e) => {
   e.preventDefault();
   //console.log("form submit");
 
-  let response = await fetch(`http://localhost:5678/api/works/`, {
+  /*let response = await*/ fetch(`http://localhost:5678/api/works/`, {
     method: "POST",
     headers: {
       //"Content-Type": "multipart/form-data",
@@ -32,7 +32,7 @@ addPicturesForm.onsubmit = async (e) => {
     },
     body: new FormData(addPicturesForm),
   });
-  let result = await response.json();
+  //let result = await response.json();
 
   alert(result.message);
 
