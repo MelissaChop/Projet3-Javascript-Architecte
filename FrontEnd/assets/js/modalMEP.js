@@ -127,6 +127,7 @@ export async function displayWorksD() {
             error
           );
         });
+      iconeGarbage.removeEventListener;
     });
   }
 }
