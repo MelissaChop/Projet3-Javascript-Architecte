@@ -1,10 +1,11 @@
+//import { displayWorksD } from "./modalMEP";
 /* Appel API Works*/
 export async function displayWorks() {
-  const worksApi = await fetch("http://localhost:5678/api/works");
+  let worksApi = await fetch("http://localhost:5678/api/works");
   //console.log(worksApi);
 
   /*Mettre au format JSON */
-  const works = await worksApi.json();
+  let works = await worksApi.json();
   //console.log(works);
 
   /* Creer fonction Portfolio*/

@@ -1,3 +1,5 @@
+import { displayWorks } from "./index.js";
+
 export async function displayWorksD() {
   const worksD = await fetch("http://localhost:5678/api/works", {
     method: "GET",
@@ -112,8 +114,11 @@ export async function displayWorksD() {
             console.log("Erreur");
             return; // Ajout de l'instruction de retour ici
           }*/
+          document.querySelector(".galleryModal").innerHTML = "";
+          displayWorksD();
+
           document.querySelector(".gallery").innerHTML = "";
-          displayWorks(worksDel);
+          displayWorks();
           return false;
         })
         .catch((error) => {
