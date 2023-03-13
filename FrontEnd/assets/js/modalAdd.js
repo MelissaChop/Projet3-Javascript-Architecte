@@ -1,22 +1,3 @@
-//-----------------------------------------------------------------------------------
-// Ajout Pictures
-/*let addPicturesForm = document.querySelector(".modal-content2");
-addPicturesForm.addEventListener("submit", addPicture);
-
-function addPicture(e) {
-  e.preventDefault();
-  //console.log("form submit"); ( NE FONCITONNE PAS)
-
-  let formData = new FormData(addPicturesForm);
-  titre = formData.get("#title");
-  console.log(titre);
-  let categ = formData.get("#selectionCategorie2");
-
-  console.log("Pictures", { titre, categ });
-}*/
-
-//-----------------------------------------------------------------------------------------
-
 import { displayWorksD } from "./modalMEP.js";
 import { displayWorks } from "./index.js";
 
@@ -71,11 +52,6 @@ export function displayForm(works) {
       });
   };
 
-  /*let formData = new FormData([form]);
-let titre = formData.get("#title");
-let categ = formData.get("#selectionCategorie2");
-
-console.log("Pictures", { titre, categ });*/
   //------------------------------------------------------------
   //AFFICHAGE IMAGE
   var image = document.querySelector("#image");

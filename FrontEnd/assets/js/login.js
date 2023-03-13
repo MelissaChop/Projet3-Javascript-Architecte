@@ -52,12 +52,8 @@ document.querySelector(".loginForm").onsubmit = function (event) {
 
       //console.log(data.token); // Vérifiez si data.token est correctement défini
       window.sessionStorage.setItem("User", JSON.stringify(data));
-      // window.sessionStorage.setItem("User", JSON.stringify(data.userId));
 
       console.log(window.sessionStorage);
-
-      //let token = window.sessionStorage.getItem("Token");
-      //console.log(token);
 
       window.location.href = "./index.html";
     })

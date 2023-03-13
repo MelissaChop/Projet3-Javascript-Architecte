@@ -99,10 +99,7 @@ export async function displayWorksD(works) {
           if (reponse.status === 401) {
             console.error("Impossible d'effectuer la suppression");
             window.location.href = "./login.html";
-          } /*else if (reponse.status === 204) {
-            console.log("Erreur");
-            return; // Ajout de l'instruction de retour ici
-          }*/
+          }
 
           let index = works.findIndex((work) => work.id === worksDel);
           works.splice(index, 1);

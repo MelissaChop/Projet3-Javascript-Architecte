@@ -1,4 +1,3 @@
-//import { displayWorksD } from "./modalMEP";
 import { initModal } from "./modal.js";
 
 let worksApi = await fetch("http://localhost:5678/api/works");
@@ -19,8 +18,6 @@ export async function displayWorks(works) {
 
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
-    //console.log(works[i].title + ', ' + works[i].imageUrl);
-
     /*Creation des balises HTML*/
 
     const worksElement = document.createElement("figure");
