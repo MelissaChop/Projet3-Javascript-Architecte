@@ -1,7 +1,8 @@
 import { displayWorks } from "./index.js";
 
-export async function displayWorksD() {
-  const worksD = await fetch("http://localhost:5678/api/works", {
+export async function displayWorksD(works) {
+  document.querySelector(".galleryModal").innerHTML = "";
+  /*  const worksD = await fetch("http://localhost:5678/api/works", {
     method: "GET",
     headers: {
       accept: "application/json",
@@ -10,7 +11,7 @@ export async function displayWorksD() {
   });
   //console.log(worksD);
   /*Mettre au format JSON */
-  let works = await worksD.json();
+  /* let works = await worksD.json();*/
   //console.log(works);
 
   /* Creer fonction Portfolio*/
@@ -90,16 +91,16 @@ export async function displayWorksD() {
     });
 
     //DELETE//
+
     const token = window.sessionStorage.getItem("User");
     const tokenObj = JSON.parse(token);
     //console.log(tokenObj);
 
     iconeGarbage.addEventListener("click", function (event) {
       event.preventDefault();
-      let worksDel = worksElement.dataset.id;
-      //console.log(worksDel);
-
-      document.querySelector(".gallery").innerHTML = "";
+      let worksDel = parseInt(worksElement.dataset.id);
+      console.log(worksDel);
+      console.log(typeof worksDel);
 
       fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",
@@ -116,15 +117,13 @@ export async function displayWorksD() {
             return; // Ajout de l'instruction de retour ici
           }*/
 
-          document.querySelector(".galleryModal").innerHTML = "";
+          let index = works.findIndex((work) => work.id === worksDel);
+          works.splice(index, 1);
+          console.log(index);
 
-          displayWorksD(worksDel);
-
-          document.querySelector(".gallery").innerHTML = "";
+          displayWorksD(works);
 
           displayWorks(works);
-
-          iconeGarbage.removeEventListener;
 
           return false;
         })
@@ -138,5 +137,3 @@ export async function displayWorksD() {
     });
   }
 }
-
-displayWorksD();

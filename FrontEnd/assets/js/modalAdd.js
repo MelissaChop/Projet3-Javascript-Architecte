@@ -20,66 +20,71 @@ function addPicture(e) {
 import { displayWorksD } from "./modalMEP.js";
 import { displayWorks } from "./index.js";
 
-var icone = document.querySelector("#fondImage");
-var boutonAdd = document.querySelector("#image");
+export function displayForm(works) {
+  var icone = document.querySelector("#fondImage");
+  var boutonAdd = document.querySelector("#image");
 
-const token = window.sessionStorage.getItem("User");
-const tokenObj = JSON.parse(token).token;
+  const token = window.sessionStorage.getItem("User");
+  const tokenObj = JSON.parse(token).token;
 
-//console.log(tokenObj);
+  //console.log(tokenObj);
 
-/*boutonAdd.addEventListener("click", function (e) {
+  /*boutonAdd.addEventListener("click", function (e) {
   icone.classList.replace("fa-image", "image");
 });*/
 
-let addPicturesForm = document.querySelector("#formModal");
-addPicturesForm.onsubmit = async (e) => {
-  const addImage = new FormData(addPicturesForm);
+  let addPicturesForm = document.querySelector("#formModal");
+  addPicturesForm.onsubmit = (e) => {
+    const addImage = new FormData(addPicturesForm);
 
-  e.preventDefault();
+    e.preventDefault();
 
-  fetch(`http://localhost:5678/api/works`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${tokenObj}`,
-    },
-    body: addImage,
-  })
-    .then((reponse) => {
-      if (
-        addImage.get("#image") === true ||
-        addImage.get("#title") === true ||
-        addImage.get("#category") === true
-      ) {
-        const valider = document.querySelector(".addPictures");
-        valider.disabled = false;
-      }
-      document.querySelector(".galleryModal").innerHTML = "";
-      displayWorksD(addPicturesForm);
-
-      document.querySelector(".gallery").innerHTML = "";
-      displayWorks(addPicturesForm);
-
-      return reponse.JSON;
+    fetch(`http://localhost:5678/api/works`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${tokenObj}`,
+      },
+      body: addImage,
     })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+      .then((reponse) => {
+        /*if (
+          addImage.get("#image") === true ||
+          addImage.get("#title") === true ||
+          addImage.get("#category") === true
+        ) {
+          const valider = document.querySelector(".addPictures");
+          valider.disabled = false;
+        }*/
 
-/*let formData = new FormData([form]);
+        return reponse.json();
+      })
+      .then((work) => {
+        console.log(work);
+
+        works.push(work);
+
+        displayWorksD(works);
+        displayWorks(works);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  /*let formData = new FormData([form]);
 let titre = formData.get("#title");
 let categ = formData.get("#selectionCategorie2");
 
 console.log("Pictures", { titre, categ });*/
-//------------------------------------------------------------
-//AFFICHAGE IMAGE
-var input = document.querySelector("#image");
-var preview = document.querySelector(".preview");
+  //------------------------------------------------------------
+  //AFFICHAGE IMAGE
+  var input = document.querySelector("#image");
+  var preview = document.querySelector(".preview");
 
-input.addEventListener("change", updateImageDisplay);
-function updateImageDisplay() {
-  while (preview.firstChild) {
-    preview.removeChild(preview.firstChild);
+  input.addEventListener("change", updateImageDisplay);
+  function updateImageDisplay() {
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
   }
 }

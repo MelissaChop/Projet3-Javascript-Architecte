@@ -1,3 +1,12 @@
+import { displayWorksD } from "./modalMEP.js";
+import { displayForm } from "./modalAdd.js";
+
+let myWorks = null;
+
+export function initModal(works) {
+  myWorks = works;
+}
+
 //MODAL 1 //
 var modal = document.querySelector(".modal");
 
@@ -9,6 +18,7 @@ var closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
   modal.classList.toggle("show-modal");
+  displayWorksD(myWorks);
 }
 
 // Ferme la modal si clique en dehors de la modal
@@ -39,6 +49,7 @@ var retour = document.querySelector("#return");
 function toggleModal2() {
   modal2.classList.toggle("show-modal2");
   modal.classList.remove("show-modal");
+  displayForm(myWorks);
 }
 
 function windowOnClick2(event) {
