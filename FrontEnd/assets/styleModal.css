@@ -163,9 +163,10 @@
   transform: scale(1);
 }
 
-.allerRetour {
+#allerRetour {
   display: flex;
   justify-content: space-between;
+  margin-top: 14px;
 }
 
 #return {
@@ -179,6 +180,8 @@
   align-self: center;
   margin-top: 10px;
   font-size: 2em;
+  display: flex;
+  justify-content: center;
 }
 
 .buttonModalFin2 {
@@ -285,6 +288,9 @@
 #infoTitle {
   margin-bottom: 10px;
   margin-top: 21px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 
 #title,
@@ -306,7 +312,7 @@
   align-self: center;
 }
 
-.addPictures[disabled] {
+#addPictures[disabled] {
   background-color: #a7a7a7;
   width: 237px;
   height: 36px;

@@ -44,8 +44,8 @@ addPicturesForm.onsubmit = async (e) => {
       Authorization: `Bearer ${tokenObj}`,
     },
     body: addImage,
-  });
-  /*.then((reponse) => {
+  })
+    .then((reponse) => {
       if (
         addImage.get("#image") === true ||
         addImage.get("#title") === true ||
@@ -54,17 +54,17 @@ addPicturesForm.onsubmit = async (e) => {
         const valider = document.querySelector(".addPictures");
         valider.disabled = false;
       }
+      document.querySelector(".galleryModal").innerHTML = "";
+      displayWorksD(addPicturesForm);
+
+      document.querySelector(".gallery").innerHTML = "";
+      displayWorks(addPicturesForm);
+
       return reponse.JSON;
     })
     .catch((error) => {
       console.log(error);
-    });*/
-
-  /*document.querySelector(".galleryModal").innerHTML = "";
-  displayWorksD(addPicturesForm);
-
-  document.querySelector(".gallery").innerHTML = "";
-  displayWorks(addPicturesForm);*/
+    });
 };
 
 /*let formData = new FormData([form]);

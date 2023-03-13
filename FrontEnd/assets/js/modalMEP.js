@@ -116,6 +116,16 @@ export async function displayWorksD() {
             return; // Ajout de l'instruction de retour ici
           }*/
 
+          document.querySelector(".galleryModal").innerHTML = "";
+
+          displayWorksD(worksDel);
+
+          document.querySelector(".gallery").innerHTML = "";
+
+          displayWorks(works);
+
+          iconeGarbage.removeEventListener;
+
           return false;
         })
 
@@ -125,13 +135,6 @@ export async function displayWorksD() {
             error
           );
         });
-
-      document.querySelector(".galleryModal").innerHTML = "";
-
-      displayWorksD(worksDel);
-      displayWorks(works);
-
-      iconeGarbage.removeEventListener;
     });
   }
 }
