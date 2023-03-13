@@ -78,13 +78,17 @@ let categ = formData.get("#selectionCategorie2");
 console.log("Pictures", { titre, categ });*/
   //------------------------------------------------------------
   //AFFICHAGE IMAGE
-  var input = document.querySelector("#image");
+  var image = document.querySelector("#image");
   var preview = document.querySelector(".preview");
 
-  input.addEventListener("change", updateImageDisplay);
-  function updateImageDisplay() {
+  image.addEventListener("change", function () {
+    if (this.files && this.files[0]) {
+      console.log(this.files[0].size);
+    }
+  });
+  /*function updateImageDisplay() {
     while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
-  }
+  }*/
 }

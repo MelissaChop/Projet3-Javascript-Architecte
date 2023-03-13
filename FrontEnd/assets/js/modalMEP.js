@@ -2,17 +2,6 @@ import { displayWorks } from "./index.js";
 
 export async function displayWorksD(works) {
   document.querySelector(".galleryModal").innerHTML = "";
-  /*  const worksD = await fetch("http://localhost:5678/api/works", {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
-  //console.log(worksD);
-  /*Mettre au format JSON */
-  /* let works = await worksD.json();*/
-  //console.log(works);
 
   /* Creer fonction Portfolio*/
   /*Choix de l'emplacement de la balise HTML*/
@@ -22,8 +11,6 @@ export async function displayWorksD(works) {
 
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
-    //console.log(works[i].title + ", " + works[i].imageUrl);
-
     /*Creation des balises HTML*/
 
     const worksElement = document.createElement("figure");
