@@ -28,9 +28,9 @@ const tokenObj = JSON.parse(token).token;
 
 //console.log(tokenObj);
 
-boutonAdd.addEventListener("click", function (e) {
+/*boutonAdd.addEventListener("click", function (e) {
   icone.classList.replace("fa-image", "image");
-});
+});*/
 
 let addPicturesForm = document.querySelector("#formModal");
 addPicturesForm.onsubmit = async (e) => {
@@ -72,3 +72,14 @@ let titre = formData.get("#title");
 let categ = formData.get("#selectionCategorie2");
 
 console.log("Pictures", { titre, categ });*/
+//------------------------------------------------------------
+//AFFICHAGE IMAGE
+var input = document.querySelector("#image");
+var preview = document.querySelector(".preview");
+
+input.addEventListener("change", updateImageDisplay);
+function updateImageDisplay() {
+  while (preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+}
