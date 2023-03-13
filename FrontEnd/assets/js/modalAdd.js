@@ -49,9 +49,12 @@ addPicturesForm.onsubmit = async (e) => {
       if (
         addImage.get("#image") === true ||
         addImage.get("#title") === true ||
-        addImage.get("#selectionCategorie2") === true
+        addImage.get("#category") === true
       ) {
+        const valider = document.querySelector(".addPictures");
+        valider.disabled = false;
       }
+      return reponse.JSON;
     })
     .catch((error) => {
       console.log(error);

@@ -99,6 +99,8 @@ export async function displayWorksD() {
       let worksDel = worksElement.dataset.id;
       //console.log(worksDel);
 
+      document.querySelector(".gallery").innerHTML = "";
+
       fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",
         headers: {
@@ -113,20 +115,21 @@ export async function displayWorksD() {
             console.log("Erreur");
             return; // Ajout de l'instruction de retour ici
           }*/
-          document.querySelector(".galleryModal").innerHTML = "";
-          displayWorksD();
-
-          document.querySelector(".gallery").innerHTML = "";
-          displayWorks();
 
           return false;
         })
+
         .catch((error) => {
           console.error(
             "Une erreur est survenue lors de la suppression",
             error
           );
         });
+
+      document.querySelector(".galleryModal").innerHTML = "";
+
+      displayWorksD(worksDel);
+      displayWorks(works);
 
       iconeGarbage.removeEventListener;
     });
