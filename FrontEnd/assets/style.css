@@ -141,15 +141,17 @@ header {
 }
 #barre {
   z-index: 9999;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 59px;
-  width: 100vw;
+  width: 100%;
+  left: 0;
   background-color: black;
   margin: 0;
-  margin-left: -11.5%;
-  margin-right: -11.5%;
+  /* margin-left: -40.5%;
+  margin-right: -40.5%;*/
 }
 
 #enTete {

@@ -132,6 +132,9 @@ let enTete = document.getElementById("#barre");
 if (connexion != null) {
   button.style.display = "none";
 
+  const enTeteNav = document.querySelector("#enTete");
+  enTeteNav.style.marginTop = "97px";
+
   //Ajout En tete //
   //Barre noir //
   let enTete = document.getElementById("barre");
