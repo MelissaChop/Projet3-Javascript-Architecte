@@ -2,8 +2,8 @@ import { displayWorksD } from "./modalMEP.js";
 import { displayWorks } from "./index.js";
 
 export function displayForm(works) {
-  var icone = document.querySelector("#fondImage");
-  var boutonAdd = document.querySelector("#image");
+  //var icone = document.querySelector("#fondImage");
+  // var boutonAdd = document.querySelector("#image");
 
   const token = window.sessionStorage.getItem("User");
   const tokenObj = JSON.parse(token).token;
@@ -54,26 +54,24 @@ export function displayForm(works) {
 
   //------------------------------------------------------------
   //AFFICHAGE IMAGE
+
   var image = document.querySelector("#image");
   var preview = document.querySelector(".preview");
   let previewOff = document.querySelector(".previewOff");
+  let icone = document.querySelector("#fondImage");
 
-  /* image.addEventListener("change", function () {
-    if (this.files && this.files[0]) {
-      console.log(this.files[0].size);
-    }
-  });*/
-  //----------------^^----------------
-  /*function updateImageDisplay() {
-    while (preview.firstChild) {
-      preview.removeChild(preview.firstChild);
-    }
-  }*/
+  var maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
   image.addEventListener("change", function () {
     for (var i = 0; i < this.files.length; i++) {
       var file = this.files[i];
-      var imageType = /^image\//;
+      var imageType = /^image\/(jpeg|png)$/; // Controle si est bien une image
+
+      if (file.size > maxSize) {
+        icone.style.display = "none";
+        preview.innerHTML = "<p >Image superieur à 4mo !</p>";
+        return false;
+      }
 
       if (!imageType.test(file.type)) {
         continue;
@@ -82,23 +80,17 @@ export function displayForm(works) {
       const img = document.createElement("img");
       img.classList.add("obj");
       img.file = file;
-      preview.appendChild(img); // En admettant que "preview" est l'élément div qui contiendra le contenu affiché.
+      preview.appendChild(img);
 
       var reader = new FileReader();
+      previewOff.style.display = "none";
+
       reader.onload = (function (aImg) {
         return function (e) {
           aImg.src = e.target.result;
-          previewOff.style.display = "none";
         };
       })(img);
       reader.readAsDataURL(file);
     }
   });
 }
-
-//  #addPictures = id du boutons valider modal 2
-/*
--Pour accéder à un fichier sélectionné en utilisant un sélecteur DOM classique :
-
-var fichierSelectionne = document.getElementById('#addPictures').files[0];
-*/
