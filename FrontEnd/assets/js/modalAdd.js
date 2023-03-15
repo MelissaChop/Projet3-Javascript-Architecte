@@ -11,7 +11,7 @@ export function displayForm(works) {
   //console.log(tokenObj);
 
   /*boutonAdd.addEventListener("click", function (e) {
-  icone.classList.replace("fa-image", "image");
+  icone.classList.replace("previewOff", "preview");
 });*/
 
   let addPicturesForm = document.querySelector("#formModal");
@@ -56,15 +56,49 @@ export function displayForm(works) {
   //AFFICHAGE IMAGE
   var image = document.querySelector("#image");
   var preview = document.querySelector(".preview");
+  let previewOff = document.querySelector(".previewOff");
 
-  image.addEventListener("change", function () {
+  /* image.addEventListener("change", function () {
     if (this.files && this.files[0]) {
       console.log(this.files[0].size);
     }
-  });
+  });*/
+  //----------------^^----------------
   /*function updateImageDisplay() {
     while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
   }*/
+
+  image.addEventListener("change", function () {
+    for (var i = 0; i < this.files.length; i++) {
+      var file = this.files[i];
+      var imageType = /^image\//;
+
+      if (!imageType.test(file.type)) {
+        continue;
+      }
+
+      const img = document.createElement("img");
+      img.classList.add("obj");
+      img.file = file;
+      preview.appendChild(img); // En admettant que "preview" est l'élément div qui contiendra le contenu affiché.
+
+      var reader = new FileReader();
+      reader.onload = (function (aImg) {
+        return function (e) {
+          aImg.src = e.target.result;
+          previewOff.style.display = "none";
+        };
+      })(img);
+      reader.readAsDataURL(file);
+    }
+  });
 }
+
+//  #addPictures = id du boutons valider modal 2
+/*
+-Pour accéder à un fichier sélectionné en utilisant un sélecteur DOM classique :
+
+var fichierSelectionne = document.getElementById('#addPictures').files[0];
+*/

@@ -119,20 +119,22 @@
             <form id="formModal">
               <h2 id="titleModal2">Ajout photo</h2>
               <div class="addPicture">
-                <div class="preview">
+                <div class="preview"></div>
+                <div class="previewOff">
                   <i
                     class="fa-regular fa-image"
                     id="fondImage"
                     src="#ajoutPhoto"></i>
+
+                  <label for="image" class="ajoutPhoto">+ Ajouter photo</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".png, .jpeg, .jpg"
+                    required />
+                  <p class="descriptionImage">jpg, png : 4mo max</p>
                 </div>
-                <label for="image" class="ajoutPhoto">+ Ajouter photo</label>
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept=".png, .jpeg, .jpg"
-                  required />
-                <p class="descriptionImage">jpg, png : 4mo max</p>
               </div>
               <div class="infoPhoto">
                 <div id="infoTitle">
