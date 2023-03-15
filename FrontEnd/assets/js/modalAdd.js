@@ -66,7 +66,7 @@ export function displayForm(works) {
     for (var i = 0; i < this.files.length; i++) {
       preview.innerHTML = "";
       var file = this.files[i];
-      var imageType = /^image\/(jpeg|png)$/; // Controle si est bien une image
+      var imageType = /(jpeg|png)$/; // Controle si est bien une image
 
       if (file.size > maxSize) {
         icone.style.display = "none";
@@ -75,23 +75,25 @@ export function displayForm(works) {
       }
 
       if (!imageType.test(file.type)) {
-        continue;
+        icone.style.display = "none";
+        preview.innerHTML = "<p >Attention : jpg ou png !</p>";
+        return false;
+      } else {
+        const img = document.createElement("img");
+        img.classList.add("obj");
+        img.file = file;
+        preview.appendChild(img);
+
+        var reader = new FileReader();
+        previewOff.style.display = "none";
+
+        reader.onload = (function (aImg) {
+          return function (e) {
+            aImg.src = e.target.result;
+          };
+        })(img);
+        reader.readAsDataURL(file);
       }
-
-      const img = document.createElement("img");
-      img.classList.add("obj");
-      img.file = file;
-      preview.appendChild(img);
-
-      var reader = new FileReader();
-      previewOff.style.display = "none";
-
-      reader.onload = (function (aImg) {
-        return function (e) {
-          aImg.src = e.target.result;
-        };
-      })(img);
-      reader.readAsDataURL(file);
     }
   });
 }
