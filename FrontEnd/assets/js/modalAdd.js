@@ -64,6 +64,7 @@ export function displayForm(works) {
 
   image.addEventListener("change", function () {
     for (var i = 0; i < this.files.length; i++) {
+      preview.innerHTML = "";
       var file = this.files[i];
       var imageType = /^image\/(jpeg|png)$/; // Controle si est bien une image
 
