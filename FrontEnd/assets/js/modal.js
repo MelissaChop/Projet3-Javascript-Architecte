@@ -40,7 +40,6 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 // 2nd MODAL //
-
 var modal2 = document.querySelector(".modal2");
 var trigger2 = document.querySelector(".addPictures");
 var closeButton2 = document.querySelector(".close-button2");

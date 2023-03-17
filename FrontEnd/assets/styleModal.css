@@ -313,7 +313,7 @@
   align-self: center;
 }
 
-#addPictures[disabled] {
+#addPictures:disabled {
   background-color: #a7a7a7;
   width: 237px;
   height: 36px;
