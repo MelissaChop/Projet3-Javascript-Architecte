@@ -52,7 +52,42 @@ image.addEventListener("change", function () {
 });
 
 export function displayForm(works) {
-  if (
+  const token = window.sessionStorage.getItem("User");
+  const tokenObj = JSON.parse(token).token;
+
+  //console.log(tokenObj);
+
+  let addPicturesForm = document.querySelector("#formModal");
+  addPicturesForm.onsubmit = (e) => {
+    const addImage = new FormData(addPicturesForm);
+    e.preventDefault();
+
+    fetch(`http://localhost:5678/api/works`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${tokenObj}`,
+      },
+      body: addImage,
+    })
+      .then((reponse) => {
+        return reponse.json();
+      })
+      .then((work) => {
+        console.log(work);
+
+        works.push(work);
+
+        displayWorksD(works);
+        displayWorks(works);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}
+
+//-------------TEST Ne fonctionne pas
+/* if (
     inputImage.value === "" ||
     inputTitle.value === "" ||
     inputCategory.value === ""
@@ -60,39 +95,4 @@ export function displayForm(works) {
     // bouttonValid.disabled = true;
     return;
   } else {
-    bouttonValid.disabled = false;
-
-    const token = window.sessionStorage.getItem("User");
-    const tokenObj = JSON.parse(token).token;
-
-    //console.log(tokenObj);
-
-    let addPicturesForm = document.querySelector("#formModal");
-    addPicturesForm.onsubmit = (e) => {
-      const addImage = new FormData(addPicturesForm);
-      e.preventDefault();
-
-      fetch(`http://localhost:5678/api/works`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${tokenObj}`,
-        },
-        body: addImage,
-      })
-        .then((reponse) => {
-          return reponse.json();
-        })
-        .then((work) => {
-          console.log(work);
-
-          works.push(work);
-
-          displayWorksD(works);
-          displayWorks(works);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-  }
-}
+    bouttonValid.disabled = false;*/
