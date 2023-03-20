@@ -6,24 +6,22 @@ let titleOk = false;
 let categoryOk = false;
 
 //FILTRE EN DYNAMIQUE-----------------------------------------------------
-const categorieModal = document.querySelector("#selectionCategorie2");
 
-const filtreModal = document.createElement("option");
-filtreModal.id = "0";
-const filtreModal1 = document.createElement("option");
-filtreModal1.id = "1";
-filtreModal1.innerText = "Objets";
-const filtreModal2 = document.createElement("option");
-filtreModal2.id = "2";
-filtreModal2.innerText = "Appartements";
-const filtreModal3 = document.createElement("option");
-filtreModal3.id = "3";
-filtreModal3.innerText = "Hôtels & restaurants";
+function categorieAdd(categories) {
+  let selectCategory = document.querySelector("#selectionCategorie2");
+  selectCategory.innerHTML = "";
 
-categorieModal.appendChild(filtreModal);
-categorieModal.appendChild(filtreModal1);
-categorieModal.appendChild(filtreModal2);
-categorieModal.appendChild(filtreModal3);
+  for (const category of categories) {
+    let option = document.createElement("option");
+    option.value = category.id;
+    if (category.id === 0) {
+      option.label = "";
+    } else {
+      option.label = category.name;
+    }
+    selectCategory.appendChild(option);
+  }
+}
 
 //console.log(categorieModal);
 
@@ -40,46 +38,38 @@ const [image, preview, previewOff, icone] = [
 const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
 function imageMinia() {
-  for (let i = 0; i < this.files.length; i++) {
-    //preview.innerHTML = "";
-    const file = this.files[i];
-    const imageType = /(jpeg|png)$/; // Contrôle si est bien une image
+  //preview.innerHTML = "";
+  const file = this.files[0];
+  const imageType = /(jpg|png)$/; // Contrôle si est bien une image
 
-    if (file.size > maxSize) {
-      icone.style.display = "none";
-      preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
-      return false;
-    }
+  if (file.size > maxSize) {
+    icone.style.display = "none";
+    preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
+    return false;
+  }
 
-    if (!imageType.test(file.type)) {
-      icone.style.display = "none";
-      preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
-      return false;
-    } else {
-      const img = document.createElement("img");
-      img.classList.add("obj");
-      img.file = file;
+  if (!imageType.test(file.type)) {
+    icone.style.display = "none";
+    preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
+    return false;
+  } else {
+    let img = document.querySelector(".imagePreview");
+    img.src = URL.createObjectURL(file);
+    img.onload = function () {
       preview.appendChild(img);
-
-      const reader = new FileReader();
       previewOff.style.display = "none";
-
-      reader.onload = ((aImg) => {
-        return (e) => {
-          aImg.src = e.target.result;
-        };
-      })(img);
-      reader.readAsDataURL(file);
-    }
+      URL.revokeObjectURL(this.src);
+    };
   }
 }
 image.addEventListener("change", imageMinia);
 
 //Envoie image a l'API
 
-export function displayForm(works) {
+export function displayForm(works, categories) {
   const token = window.sessionStorage.getItem("User");
   const tokenObj = JSON.parse(token).token;
+  categorieAdd(categories);
 
   //console.log(tokenObj);
 
@@ -105,6 +95,14 @@ export function displayForm(works) {
 
         displayWorksD(works);
         displayWorks(works);
+
+        previewOff.style.display = "block";
+        preview.style.display = "none";
+        addPicturesForm.reset();
+        imgOk = false;
+        titleOk = false;
+        categoryOk = false;
+        checkValidation();
       })
       .catch((error) => {
         console.log(error);
@@ -112,7 +110,7 @@ export function displayForm(works) {
   };
 }
 
-//-------------TEST Validation du formulaire
+//-------------Validation du formulaire
 
 let imgInput = document.querySelector("#image");
 let titleInput = document.querySelector("#title");
@@ -141,7 +139,7 @@ function imgInputChange() {
 imgInput.addEventListener("change", imgInputChange);
 
 function titleInputChange() {
-  if (titleInput.value) {
+  if (titleInput.value && titleInput.value.length > 3) {
     titleOk = true;
   } else {
     titleOk = false;
@@ -161,20 +159,3 @@ function categoryInputChange() {
 }
 
 categoryInput.addEventListener("change", categoryInputChange);
-
-// Fermeture de modal 2
-
-function removeEventListener() {
-  categoryInput.removeEventListener("change", categoryInputChange);
-  titleInput.removeEventListener("change", titleInputChange);
-  imgInput.removeEventListener("change", imgInputChange);
-}
-
-const retour = document.querySelector("#return");
-retour.addEventListener("click", removeEventListener);
-
-const closeB = document.querySelector(".close-button2");
-closeB.addEventListener("click", removeEventListener);
-
-const valid = document.querySelector("#addPictures");
-valid.addEventListener("click", removeEventListener);

@@ -2,9 +2,11 @@ import { displayWorksD } from "./modalMEP.js";
 import { displayForm } from "./modalAdd.js";
 
 let myWorks = null;
+let myCategories = null;
 
-export function initModal(works) {
+export function initModal(works, categories) {
   myWorks = works;
+  myCategories = categories;
 }
 
 //MODAL 1 //
@@ -48,7 +50,7 @@ var retour = document.querySelector("#return");
 function toggleModal2() {
   modal2.classList.toggle("show-modal2");
   modal.classList.remove("show-modal");
-  displayForm(myWorks);
+  displayForm(myWorks, myCategories);
 }
 
 function windowOnClick2(event) {

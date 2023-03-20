@@ -48,15 +48,15 @@ export async function displayWorks(works) {
 
 /* CREATION BOUTONS*/
 
+const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
+//console.log(categoriesApi);
+
+/*Mettre au format JSON */
+const categories = await categoriesApi.json();
+//console.log(categories);
+
 /* Creer fonction Bouton*/
-async function displayCategories() {
-  const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
-  //console.log(categoriesApi);
-
-  /*Mettre au format JSON */
-  const categories = await categoriesApi.json();
-  //console.log(categories);
-
+async function displayCategories(categories) {
   /* Creation new categorie */
   const all = {
     id: 0,
@@ -114,7 +114,7 @@ async function displayCategories() {
   }
 }
 
-displayCategories();
+displayCategories(categories);
 //console.log(displayCategories);
 displayWorks(works);
 //console.log(displayWorks);
@@ -154,4 +154,4 @@ if (connexion != null) {
   titre.style.marginTop = "5%";
 }
 
-initModal(works);
+initModal(works, categories);
