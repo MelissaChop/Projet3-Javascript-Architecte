@@ -9,15 +9,15 @@ let categoryOk = false;
 const categorieModal = document.querySelector("#selectionCategorie2");
 
 const filtreModal = document.createElement("option");
-filtreModal.value = "0";
+filtreModal.id = "0";
 const filtreModal1 = document.createElement("option");
-filtreModal1.value = "1";
+filtreModal1.id = "1";
 filtreModal1.innerText = "Objets";
 const filtreModal2 = document.createElement("option");
-filtreModal2.value = "2";
+filtreModal2.id = "2";
 filtreModal2.innerText = "Appartements";
 const filtreModal3 = document.createElement("option");
-filtreModal3.value = "3";
+filtreModal3.id = "3";
 filtreModal3.innerText = "Hôtels & restaurants";
 
 categorieModal.appendChild(filtreModal);
@@ -39,9 +39,9 @@ const [image, preview, previewOff, icone] = [
 
 const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
-image.addEventListener("change", function () {
+function imageMinia() {
   for (let i = 0; i < this.files.length; i++) {
-    preview.innerHTML = "";
+    //preview.innerHTML = "";
     const file = this.files[i];
     const imageType = /(jpeg|png)$/; // Contrôle si est bien une image
 
@@ -72,7 +72,8 @@ image.addEventListener("change", function () {
       reader.readAsDataURL(file);
     }
   }
-});
+}
+image.addEventListener("change", imageMinia);
 
 //Envoie image a l'API
 
@@ -128,29 +129,52 @@ function checkValidation() {
   }
 }
 
-imgInput.addEventListener("change", function () {
+function imgInputChange() {
   if (imgInput.value) {
     imgOk = true;
   } else {
     imgOk = false;
   }
   checkValidation();
-});
+}
 
-titleInput.addEventListener("input", function () {
+imgInput.addEventListener("change", imgInputChange);
+
+function titleInputChange() {
   if (titleInput.value) {
     titleOk = true;
   } else {
     titleOk = false;
   }
   checkValidation();
-});
+}
 
-categoryInput.addEventListener("change", function () {
+titleInput.addEventListener("change", titleInputChange);
+
+function categoryInputChange() {
   if (categoryInput.value) {
     categoryOk = true;
   } else {
     categoryOk = false;
   }
   checkValidation();
-});
+}
+
+categoryInput.addEventListener("change", categoryInputChange);
+
+// Fermeture de modal 2
+
+function removeEventListener() {
+  categoryInput.removeEventListener("change", categoryInputChange);
+  titleInput.removeEventListener("change", titleInputChange);
+  imgInput.removeEventListener("change", imgInputChange);
+}
+
+const retour = document.querySelector("#return");
+retour.addEventListener("click", removeEventListener);
+
+const closeB = document.querySelector(".close-button2");
+closeB.addEventListener("click", removeEventListener);
+
+const valid = document.querySelector("#addPictures");
+valid.addEventListener("click", removeEventListener);

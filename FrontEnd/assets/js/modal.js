@@ -61,6 +61,7 @@ window.addEventListener("keydown", function (e) {
   //  console.log(e.key);
   if (e.key === "Escape" || e.key === "Esc") {
     modal2.classList.remove("show-modal2");
+    //.addEventListener("click", removeEventListener);
   }
 });
 
