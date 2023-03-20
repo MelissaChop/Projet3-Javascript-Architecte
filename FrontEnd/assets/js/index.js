@@ -49,25 +49,24 @@ export async function displayWorks(works) {
 /* CREATION BOUTONS*/
 
 /* Creer fonction Bouton*/
+async function displayCategories() {
+  const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
+  //console.log(categoriesApi);
 
-const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
-//console.log(categoriesApi);
+  /*Mettre au format JSON */
+  const categories = await categoriesApi.json();
+  //console.log(categories);
 
-/*Mettre au format JSON */
-const categories = await categoriesApi.json();
-//console.log(categories);
+  /* Creation new categorie */
+  const all = {
+    id: 0,
+    name: "Tous",
+  };
 
-/* Creation new categorie */
-const all = {
-  id: 0,
-  name: "Tous",
-};
+  categories.unshift(all); /*Rajouter au debut du tableau */
 
-categories.unshift(all); /*Rajouter au debut du tableau */
+  /* Creer fonction Bouton*/
 
-/* Creer fonction Bouton*/
-
-async function displayCategories(categories) {
   /*Choix de l'emplacement de la balise HTML*/
 
   const divCategories = document.querySelector(".filter");
@@ -115,7 +114,7 @@ async function displayCategories(categories) {
   }
 }
 
-displayCategories(categories);
+displayCategories();
 //console.log(displayCategories);
 displayWorks(works);
 //console.log(displayWorks);
