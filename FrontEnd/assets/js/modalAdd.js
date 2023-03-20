@@ -28,12 +28,15 @@ function categorieAdd(categories) {
 //------------------------------------------------------------
 //AFFICHAGE IMAGE
 
-const [image, preview, previewOff, icone] = [
+let [image, preview, previewOff, icone, img] = [
   document.querySelector("#image"),
   document.querySelector(".preview"),
   document.querySelector(".previewOff"),
   document.querySelector("#fondImage"),
+  document.querySelector(".imagePreview"),
 ];
+
+img.style.display = "none";
 
 const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
@@ -53,9 +56,9 @@ function imageMinia() {
     preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
     return false;
   } else {
-    let img = document.querySelector(".imagePreview");
     img.src = URL.createObjectURL(file);
     img.onload = function () {
+      img.style.display = "block";
       preview.appendChild(img);
       previewOff.style.display = "none";
       URL.revokeObjectURL(this.src);
