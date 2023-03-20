@@ -90,7 +90,7 @@
   color: white;
   background-color: #1d6154;
   margin: 2em auto;
-  width: 37%;
+  width: 237px;
   text-align: center;
   border-radius: 25px;
   cursor: pointer;
@@ -109,6 +109,7 @@
   border: 0;
   background-color: white;
   font-size: 1.05em;
+  margin-top: -5px;
 }
 
 .buttonModalFin {
@@ -119,6 +120,7 @@
   width: 420px;
   margin-top: 47px;
   margin-bottom: 48px;
+  padding-top: 9px;
 }
 
 /*2nd */
@@ -143,7 +145,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 1rem 1.5rem;
+  padding: 9px 30px;
   width: 630px;
   border-radius: 10px;
 }
@@ -326,7 +328,7 @@
 }
 
 .previewOff {
-  display: block;
+  /* display: block;*/
   display: flex;
   flex-direction: column;
   align-items: center;

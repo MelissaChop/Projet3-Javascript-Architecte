@@ -99,7 +99,7 @@ export function displayForm(works, categories) {
         displayWorksD(works);
         displayWorks(works);
 
-        previewOff.style.display = "block";
+        previewOff.style.display = "flex";
         preview.style.display = "none";
         addPicturesForm.reset();
         imgOk = false;
