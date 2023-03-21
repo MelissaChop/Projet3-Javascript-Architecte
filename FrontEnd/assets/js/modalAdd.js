@@ -1,21 +1,30 @@
+// Import des fonctions Works
+
 import { displayWorksD } from "./modalMEP.js";
 import { displayWorks } from "./index.js";
 
+// Declaration des variables pour les différentes parties du formulaire
 let imgOk = false;
 let titleOk = false;
 let categoryOk = false;
 
-//FILTRE EN DYNAMIQUE-----------------------------------------------------
+let titleInput = document.querySelector("#title");
+let categoryInput = document.querySelector("#selectionCategorie2");
 
+let boutonValide = document.querySelector("#addPictures");
+
+//FILTRE EN DYNAMIQUE-----------------------------------------------------
+// Permet de creer la partie categories de la Modal2
 function categorieAdd(categories) {
   let selectCategory = document.querySelector("#selectionCategorie2");
-  selectCategory.innerHTML = "";
+  selectCategory.innerHTML =
+    ""; /* A chaque retour sur la page on efface pour réafficher*/
 
   for (const category of categories) {
     let option = document.createElement("option");
     option.value = category.id;
     if (category.id === 0) {
-      option.label = "";
+      option.label = ""; /* Retire la category "Tous" */
     } else {
       option.label = category.name;
     }
@@ -27,7 +36,7 @@ function categorieAdd(categories) {
 
 //------------------------------------------------------------
 //AFFICHAGE IMAGE
-
+// Récupération des éléments HTML qui vont permettre l'affichage de l'image miniature
 let [image, preview, previewOff, icone, img] = [
   document.querySelector("#image"),
   document.querySelector(".preview"),
@@ -36,27 +45,34 @@ let [image, preview, previewOff, icone, img] = [
   document.querySelector(".imagePreview"),
 ];
 
-img.style.display = "none";
+img.style.display =
+  "none"; /* On cache en premier la partie où doit s'afficher l'image */
 
 const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
+//Fonction pour permettre d'afficher l'image
 function imageMinia() {
   //preview.innerHTML = "";
-  const file = this.files[0];
-  const imageType = /(jpg|png)$/; // Contrôle si est bien une image
+  const file = this.files[0]; // recupere le fichier de l'input de type file
+  const imageType = /(jpg|png)$/; // Contrôle si est bien une image jpg ou png
 
+  // gestion de la taille maximum
   if (file.size > maxSize) {
     icone.style.display = "none";
     preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
     return false;
   }
 
+  // Gestion du type d'image
   if (!imageType.test(file.type)) {
     icone.style.display = "none";
     preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
     return false;
   } else {
-    img.src = URL.createObjectURL(file);
+    img.src =
+      URL.createObjectURL(
+        file
+      ); /*Recuperation de creer une URL de l'image, afin de recuperer sa source */
     img.onload = function () {
       img.style.display = "block";
       preview.appendChild(img);
@@ -67,8 +83,9 @@ function imageMinia() {
 }
 image.addEventListener("change", imageMinia);
 
-//Envoie image a l'API
+//Envoie image a l'API---------------------------------------------
 
+//Appel des categories et works dans le formulaire ( grace aux imports).
 export function displayForm(works, categories) {
   const token = window.sessionStorage.getItem("User");
   const tokenObj = JSON.parse(token).token;
@@ -76,6 +93,7 @@ export function displayForm(works, categories) {
 
   //console.log(tokenObj);
 
+  // Gerer la post pour les nouvelles images
   let addPicturesForm = document.querySelector("#formModal");
   addPicturesForm.onsubmit = (e) => {
     const addImage = new FormData(addPicturesForm);
@@ -99,6 +117,7 @@ export function displayForm(works, categories) {
         displayWorksD(works);
         displayWorks(works);
 
+        /*Gestion affichage*/
         previewOff.style.display = "flex";
         preview.style.display = "none";
         addPicturesForm.reset();
@@ -113,15 +132,11 @@ export function displayForm(works, categories) {
   };
 }
 
-//-------------Validation du formulaire
+//-------------Validation du formulaire --------------------
 
-let imgInput = document.querySelector("#image");
-let titleInput = document.querySelector("#title");
-let categoryInput = document.querySelector("#selectionCategorie2");
-
-let boutonValide = document.querySelector("#addPictures");
 boutonValide.disabled = true;
 
+// Definir si bouton est disponible ou pa, celon si formulaire completement remplis
 function checkValidation() {
   if (imgOk && titleOk && categoryOk) {
     boutonValide.disabled = false;
@@ -130,8 +145,9 @@ function checkValidation() {
   }
 }
 
+// Permet de voir si la partie Image est remplis ou non
 function imgInputChange() {
-  if (imgInput.value) {
+  if (image.value) {
     imgOk = true;
   } else {
     imgOk = false;
@@ -139,7 +155,10 @@ function imgInputChange() {
   checkValidation();
 }
 
-imgInput.addEventListener("change", imgInputChange);
+// Ajout evenement lorsqu'on remplis cette partie du Form. et appel de la fonction Remplis ou non
+image.addEventListener("change", imgInputChange);
+
+// Permet de voir si la partie Title est remplis ou non
 
 function titleInputChange() {
   if (titleInput.value && titleInput.value.length > 3) {
@@ -150,7 +169,10 @@ function titleInputChange() {
   checkValidation();
 }
 
+// Ajout evenement lorsqu'on remplis cette partie du Form. et appel de la fonction Remplis ou non
 titleInput.addEventListener("change", titleInputChange);
+
+// Permet de voir si la partie Category est remplis ou non
 
 function categoryInputChange() {
   if (categoryInput.value) {
@@ -161,4 +183,5 @@ function categoryInputChange() {
   checkValidation();
 }
 
+// Ajout evenement lorsqu'on remplis cette partie du Form. et appel de la fonction Remplis ou non
 categoryInput.addEventListener("change", categoryInputChange);
