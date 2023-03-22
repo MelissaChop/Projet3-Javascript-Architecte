@@ -119,6 +119,8 @@ displayCategories(categories);
 displayWorks(works);
 //console.log(displayWorks);
 
+// Mise en page de la gallery Connecté avec les boutons "modifier " et la barre noir
+
 const connexion = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
 const gallery = document.getElementById("gallery");

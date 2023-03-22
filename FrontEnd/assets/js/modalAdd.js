@@ -34,55 +34,6 @@ function categorieAdd(categories) {
 
 //console.log(categorieModal);
 
-//------------------------------------------------------------
-//AFFICHAGE IMAGE
-// Récupération des éléments HTML qui vont permettre l'affichage de l'image miniature
-let [image, preview, previewOff, icone, img] = [
-  document.querySelector("#image"),
-  document.querySelector(".preview"),
-  document.querySelector(".previewOff"),
-  document.querySelector("#fondImage"),
-  document.querySelector(".imagePreview"),
-];
-
-img.style.display =
-  "none"; /* On cache en premier la partie où doit s'afficher l'image */
-
-const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
-
-//Fonction pour permettre d'afficher l'image
-function imageMinia() {
-  //preview.innerHTML = "";
-  const file = this.files[0]; // recupere le fichier de l'input de type file
-  const imageType = /(jpg|png)$/; // Contrôle si est bien une image jpg ou png
-
-  // gestion de la taille maximum
-  if (file.size > maxSize) {
-    icone.style.display = "none";
-    preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
-    return false;
-  }
-
-  // Gestion du type d'image
-  if (!imageType.test(file.type)) {
-    icone.style.display = "none";
-    preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
-    return false;
-  } else {
-    img.src =
-      URL.createObjectURL(
-        file
-      ); /*Recuperation de creer une URL de l'image, afin de recuperer sa source */
-    img.onload = function () {
-      img.style.display = "block";
-      preview.appendChild(img);
-      previewOff.style.display = "none";
-      URL.revokeObjectURL(this.src);
-    };
-  }
-}
-image.addEventListener("change", imageMinia);
-
 //Envoie image a l'API---------------------------------------------
 
 //Appel des categories et works dans le formulaire ( grace aux imports).
@@ -131,6 +82,55 @@ export function displayForm(works, categories) {
       });
   };
 }
+
+//------------------------------------------------------------
+//AFFICHAGE IMAGE
+// Récupération des éléments HTML qui vont permettre l'affichage de l'image miniature
+let [image, preview, previewOff, icone, img] = [
+  document.querySelector("#image"),
+  document.querySelector(".preview"),
+  document.querySelector(".previewOff"),
+  document.querySelector("#fondImage"),
+  document.querySelector(".imagePreview"),
+];
+
+img.style.display =
+  "none"; /* On cache en premier la partie où doit s'afficher l'image */
+
+const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
+
+//Fonction pour permettre d'afficher l'image
+function imageMinia() {
+  //preview.innerHTML = "";
+  const file = this.files[0]; // recupere le fichier de l'input de type file
+  const imageType = /(jpg|png)$/; // Contrôle si est bien une image jpg ou png
+
+  // gestion de la taille maximum
+  if (file.size > maxSize) {
+    icone.style.display = "none";
+    preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
+    return false;
+  }
+
+  // Gestion du type d'image
+  if (!imageType.test(file.type)) {
+    icone.style.display = "none";
+    preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
+    return false;
+  } else {
+    img.src =
+      URL.createObjectURL(
+        file
+      ); /*Recuperation de creer une URL de l'image, afin de recuperer sa source */
+    img.onload = function () {
+      img.style.display = "block";
+      preview.appendChild(img);
+      previewOff.style.display = "none";
+      URL.revokeObjectURL(this.src);
+    };
+  }
+}
+image.addEventListener("change", imageMinia);
 
 //-------------Validation du formulaire --------------------
 
