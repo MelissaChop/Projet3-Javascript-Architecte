@@ -7,7 +7,7 @@ const password = document.getElementById("password");
 document.querySelector(".loginForm").onsubmit = function (event) {
   event.preventDefault(); // Permet de ne pas rediriger//
 
-  // Recuperation API Login //
+  // Envoie du login et verification si bon ou non  //
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
@@ -23,6 +23,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
         if (reponse.status === 404) {
           let alert = document.querySelector("form");
 
+          // Affichage de message si le mail ou le mot de passe est faux
           let message = document.createElement("p");
           message.setAttribute("id", "toDelete");
           let locationMessage = alert.firstChild;
@@ -51,6 +52,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
       //console.log(data);
 
       //console.log(data.token); // Vérifiez si data.token est correctement défini
+      // Si Mot de passe et mail est juste alors redirection vers la Galery avec l'affichage conecte
       window.sessionStorage.setItem("User", JSON.stringify(data));
 
       console.log(window.sessionStorage);
@@ -60,6 +62,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
 
     .catch((error) => console.error(error));
 
+  // Retrait du message d'erreur pour proprete de l'affichage
   const toDelete = document.getElementById("toDelete");
   if (!toDelete) {
     return;
