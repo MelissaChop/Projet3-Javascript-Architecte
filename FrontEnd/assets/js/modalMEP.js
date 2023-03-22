@@ -1,14 +1,17 @@
 import { displayWorks } from "./index.js";
 
+// Rappel des works de ma fonction DisplayWorks, dans la nouvelle fonction WorksD
 export async function displayWorksD(works) {
+  // Nettoyage avant chaque affichage pour ne pas en avoir plusieur sur la même page
   document.querySelector(".galleryModal").innerHTML = "";
 
   /* Creer fonction Portfolio*/
-  /*Choix de l'emplacement de la balise HTML*/
+  /*Recuperation de l'emplacement de la balise HTML*/
 
   const divGalleryD = document.querySelector(".galleryModal");
   // console.log(divGalleryD);
 
+  // Boucle pour afficher tous les works dans un element Figure, qui contient des image et leur figcaption
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
     /*Creation des balises HTML*/
@@ -30,6 +33,8 @@ export async function displayWorksD(works) {
     //console.log(titleElement);
 
     // ICONE Garbage
+
+    // Ajout de l'icone Garbage pour chaque works
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("boxGarbage");
 
@@ -44,6 +49,7 @@ export async function displayWorksD(works) {
     //console.log(iconeGarbage);
 
     //ICONE expand
+    // Ajout de l'icone expand, pour chaque works
 
     let iconDiv = document.createElement("div");
     iconDiv.classList.add("boxExpand");
@@ -65,29 +71,34 @@ export async function displayWorksD(works) {
     divGalleryD.appendChild(worksElement);
     //console.log(divGallery);
 
-    // Ajoutez un gestionnaire d'événements pour l'événement mouseover sur l'élément cible
+    // Afficher element - Ajoutez un gestionnaire d'événements  pour l'événement mouseover sur l'élément cible ( qui ce declenche au survol d'un element)
     worksElement.addEventListener("mouseover", function () {
       // Affichez l'élément à afficher
       iconDiv.style.display = "block";
     });
 
-    // Ajoutez un gestionnaire d'événements pour l'événement mouseout sur l'élément cible
+    // Cacher element - Ajoutez un gestionnaire d'événements pour l'événement mouseout sur l'élément cible ( qui ce declenche au survol d'autre element que l'element cible, en dehors de la zone)
     worksElement.addEventListener("mouseout", function () {
       // Masquez l'élément à afficher
       iconDiv.style.display = "none";
     });
 
     //DELETE//
-
+    // Recuperation via de  session storage de l'User ( Token + User)
     const token = window.sessionStorage.getItem("User");
+
+    // Recuperation du Token
     const tokenObj = JSON.parse(token);
     //console.log(tokenObj);
 
+    // au click sur l'element garbage
     iconeGarbage.addEventListener("click", function (event) {
       event.preventDefault();
-      let worksDel = parseInt(worksElement.dataset.id);
+      let worksDel = parseInt(worksElement.dataset.id); // Permet de convertir la chaine de caractere en nombre entier. Permettra la supressin de part l'id
       console.log(worksDel);
       console.log(typeof worksDel);
+
+      // Envoie d'une requete delete a l'API en incluant le token d'authentification pour l'autorisation
 
       fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",
@@ -100,11 +111,11 @@ export async function displayWorksD(works) {
             console.error("Impossible d'effectuer la suppression");
             window.location.href = "./login.html";
           }
-
+          // Si pas erreur alors suppresion du works en fonction de l'id
           let index = works.findIndex((work) => work.id === worksDel);
           works.splice(index, 1);
           console.log(index);
-
+          // Affichage du tableau de works incluant les delete
           displayWorksD(works);
 
           displayWorks(works);
