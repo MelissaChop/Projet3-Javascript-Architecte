@@ -109,6 +109,7 @@ function imageMinia() {
   //preview.innerHTML = "";
   const file = this.files[0]; // recupere le fichier de l'input de type file
   const imageType = /(jpg|png)$/; // Contrôle si est bien une image jpg ou png
+  preview.innerHTML = "";
 
   // gestion de la taille maximum
   if (file.size > maxSize) {
