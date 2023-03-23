@@ -146,6 +146,7 @@ boutonValide.disabled = true;
 function checkValidation() {
   if (imgOk && titleOk && categoryOk) {
     boutonValide.disabled = false;
+    messageError.innerHTML = "";
   } else {
     boutonValide.disabled = true;
     messageError.innerHTML =
