@@ -126,7 +126,7 @@ function imageMinia() {
     img.src =
       URL.createObjectURL(
         file
-      ); /*Recuperation de creer une URL de l'image, afin de recuperer sa source */
+      ); /*Creer une URL de l'image, afin de recuperer sa source */
     img.onload = function () {
       img.style.display = "block";
       preview.appendChild(img);
@@ -148,7 +148,8 @@ function checkValidation() {
   } else {
     boutonValide.disabled = true;
     messageError.innerHTML =
-      "<p>Merci de remplir tous les paramètres avant de valider</p>"; // Message d'erreur tant qu ele formulaire n'est pas correctement remplis
+      "<p>Merci de remplir tous les paramètres avant de valider</p>";
+    // Message d'erreur tant qu ele formulaire n'est pas correctement remplis
   }
 }
 
