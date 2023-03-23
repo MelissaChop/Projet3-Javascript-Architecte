@@ -346,3 +346,10 @@
   margin-top: 7px;
   margin-bottom: 19px;
 }
+
+#pictures p {
+  color: red;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}

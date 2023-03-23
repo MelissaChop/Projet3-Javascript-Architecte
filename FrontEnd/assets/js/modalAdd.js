@@ -13,6 +13,8 @@ let categoryInput = document.querySelector("#selectionCategorie2");
 
 let boutonValide = document.querySelector("#addPictures");
 
+let messageError = document.querySelector("#pictures");
+
 //FILTRE EN DYNAMIQUE-----------------------------------------------------
 // Permet de creer la partie categories de la Modal2
 function categorieAdd(categories) {
@@ -72,10 +74,13 @@ export function displayForm(works, categories) {
         previewOff.style.display = "flex";
         preview.style.display = "none";
         addPicturesForm.reset();
+
         imgOk = false;
         titleOk = false;
         categoryOk = false;
+
         checkValidation();
+        messageError.innerHTML = ""; // Retait message d'erreur qui demande de correctement remplir le formulaire
       })
       .catch((error) => {
         console.log(error);
@@ -142,6 +147,8 @@ function checkValidation() {
     boutonValide.disabled = false;
   } else {
     boutonValide.disabled = true;
+    messageError.innerHTML =
+      "<p>Merci de remplir tous les paramètres avant de valider</p>"; // Message d'erreur tant qu ele formulaire n'est pas correctement remplis
   }
 }
 
