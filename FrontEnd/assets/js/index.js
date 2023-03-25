@@ -1,11 +1,9 @@
 import { initModal } from "./modal.js";
 
 let worksApi = await fetch("http://localhost:5678/api/works");
-//console.log(worksApi);
 
 /*Mettre au format JSON */
 let works = await worksApi.json();
-//console.log(works);
 
 /* Creer fonction Portfolio*/
 /* Appel API Works*/
@@ -14,7 +12,6 @@ export async function displayWorks(works) {
   /*Choix de l'emplacement de la balise HTML*/
 
   const divGallery = document.querySelector(".gallery");
-  //console.log(divGallery);
 
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
@@ -23,37 +20,30 @@ export async function displayWorks(works) {
     const worksElement = document.createElement("figure");
     worksElement.dataset.id = works[i].id;
     worksElement.dataset.categoryId = works[i].categoryId;
-    //console.log(worksElement);
 
     const image = document.createElement("img");
     image.src = works[i].imageUrl;
     image.crossOrigin = "anonymous";
     image.alt = works[i].title;
-    //console.log(image);
 
     const titleElement = document.createElement("figcaption");
     titleElement.innerText = works[i].title;
-    //console.log(titleElement);
 
     /* Lien entre les blocs enfant et parent*/
     worksElement.appendChild(image);
-    //console.log(worksElement);
 
     worksElement.appendChild(titleElement);
 
     divGallery.appendChild(worksElement);
-    //console.log(divGallery);
   }
 }
 
 /* CREATION BOUTONS*/
 
 const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
-//console.log(categoriesApi);
 
 /*Mettre au format JSON */
 const categories = await categoriesApi.json();
-//console.log(categories);
 
 /* Creer fonction Bouton*/
 async function displayCategories(categories) {
@@ -70,12 +60,9 @@ async function displayCategories(categories) {
   /*Choix de l'emplacement de la balise HTML*/
 
   const divCategories = document.querySelector(".filter");
-  //console.log(divCategories);
 
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < categories.length; i++) {
-    //console.log(categories[i].name);
-
     /*Creation des balises HTML*/
 
     const buttonCategories = document.createElement("button");
@@ -87,12 +74,9 @@ async function displayCategories(categories) {
       buttonCategories.classList.add("active");
     }
 
-    //console.log(buttonCategories);
-
     /* Lien entre les blocs enfant et parent*/
 
     divCategories.appendChild(buttonCategories);
-    //console.log(divCategories);
 
     //_______________________________________________________________________________
     //FILTRE SUR LES BOUTONS //
@@ -115,16 +99,12 @@ async function displayCategories(categories) {
 }
 
 displayCategories(categories);
-//console.log(displayCategories);
 displayWorks(works);
-//console.log(displayWorks);
 
 // Mise en page de la gallery Connecté avec les boutons "modifier " et la barre noir
 
 const connexion = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
-const gallery = document.getElementById("gallery");
-//console.log(connexion);
 
 let enTete = document.getElementById("#barre");
 if (connexion != null) {

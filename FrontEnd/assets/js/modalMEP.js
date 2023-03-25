@@ -9,7 +9,6 @@ export async function displayWorksD(works) {
   /*Recuperation de l'emplacement de la balise HTML*/
 
   const divGalleryD = document.querySelector(".galleryModal");
-  // console.log(divGalleryD);
 
   // Boucle pour afficher tous les works dans un element Figure, qui contient des image et leur figcaption
   /*Boucle dans le tableau JSON */
@@ -19,18 +18,15 @@ export async function displayWorksD(works) {
     const worksElement = document.createElement("figure");
     worksElement.dataset.id = works[i].id;
     worksElement.dataset.categoryId = works[i].categoryId;
-    //console.log(worksElement);*/
 
     const image = document.createElement("img");
     image.src = works[i].imageUrl;
     image.crossOrigin = "anonymous";
     image.alt = works[i].title;
     image.classList.add("imgWorks");
-    //console.log(image);
 
     const titleElement = document.createElement("figcaption");
     titleElement.innerText = "éditer";
-    //console.log(titleElement);
 
     // ICONE Garbage
 
@@ -45,8 +41,6 @@ export async function displayWorksD(works) {
     imgDiv.appendChild(iconeGarbage);
 
     worksElement.appendChild(imgDiv);
-
-    //console.log(iconeGarbage);
 
     //ICONE expand
     // Ajout de l'icone expand, pour chaque works
@@ -64,12 +58,10 @@ export async function displayWorksD(works) {
 
     /* Lien entre les blocs enfant et parent*/
     worksElement.appendChild(image);
-    //console.log(worksElement);
 
     worksElement.appendChild(titleElement);
 
     divGalleryD.appendChild(worksElement);
-    //console.log(divGallery);
 
     // Afficher element - Ajoutez un gestionnaire d'événements  pour l'événement mouseover sur l'élément cible ( qui ce declenche au survol d'un element)
     worksElement.addEventListener("mouseover", function () {
@@ -89,14 +81,11 @@ export async function displayWorksD(works) {
 
     // Recuperation du Token
     const tokenObj = JSON.parse(token);
-    //console.log(tokenObj);
 
     // au click sur l'element garbage
     iconeGarbage.addEventListener("click", function (event) {
       event.preventDefault();
       let worksDel = parseInt(worksElement.dataset.id); // Permet de convertir la chaine de caractere en nombre entier. Permettra la supressin de part l'id
-      console.log(worksDel);
-      console.log(typeof worksDel);
 
       // Envoie d'une requete delete a l'API en incluant le token d'authentification pour l'autorisation
 
@@ -114,7 +103,6 @@ export async function displayWorksD(works) {
           // Si pas erreur alors suppresion du works en fonction de l'id
           let index = works.findIndex((work) => work.id === worksDel);
           works.splice(index, 1);
-          console.log(index);
           // Affichage du tableau de works incluant les delete
           displayWorksD(works);
 

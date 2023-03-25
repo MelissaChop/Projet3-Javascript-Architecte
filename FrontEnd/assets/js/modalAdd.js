@@ -34,8 +34,6 @@ function categorieAdd(categories) {
   }
 }
 
-//console.log(categorieModal);
-
 //Envoie image a l'API---------------------------------------------
 
 //Appel des categories et works dans le formulaire ( grace aux imports).
@@ -43,8 +41,6 @@ export function displayForm(works, categories) {
   const token = window.sessionStorage.getItem("User");
   const tokenObj = JSON.parse(token).token;
   categorieAdd(categories);
-
-  //console.log(tokenObj);
 
   // Gerer la post pour les nouvelles images
   let addPicturesForm = document.querySelector("#formModal");
@@ -63,8 +59,6 @@ export function displayForm(works, categories) {
         return reponse.json();
       })
       .then((work) => {
-        console.log(work);
-
         works.push(work);
 
         displayWorksD(works);

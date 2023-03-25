@@ -49,13 +49,8 @@ document.querySelector(".loginForm").onsubmit = function (event) {
     })
 
     .then((data) => {
-      //console.log(data);
-
-      //console.log(data.token); // Vérifiez si data.token est correctement défini
       // Si Mot de passe et mail est juste alors redirection vers la Galery avec l'affichage conecte
       window.sessionStorage.setItem("User", JSON.stringify(data));
-
-      console.log(window.sessionStorage);
 
       window.location.href = "./index.html";
     })

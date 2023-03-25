@@ -36,7 +36,6 @@ function windowOnClick(event) {
 
 // Fermeture de la modal si clique sur echap/escape
 window.addEventListener("keydown", function (e) {
-  //  console.log(e.key);
   if (e.key === "Escape" || e.key === "Esc") {
     modal.classList.remove("show-modal");
   }
@@ -71,7 +70,6 @@ function windowOnClick2(event) {
 
 // Fermeture de la modal si clique sur echap/escape
 window.addEventListener("keydown", function (e) {
-  //  console.log(e.key);
   if (e.key === "Escape" || e.key === "Esc") {
     modal2.classList.remove("show-modal2");
     //.addEventListener("click", removeEventListener);
