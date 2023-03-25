@@ -100,9 +100,8 @@ const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 
 //Fonction pour permettre d'afficher l'image
 function imageMinia() {
-  //preview.innerHTML = "";
   const file = this.files[0]; // recupere le fichier de l'input de type file
-  const imageType = /(jpg|png)$/; // Contrôle si est bien une image jpg ou png
+  const imageType = /(jpg|jpeg|png)$/; // Contrôle si est bien une image jpg ou png
   preview.innerHTML = "";
   previewOff.style.display = "block";
 

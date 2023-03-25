@@ -300,6 +300,10 @@ a,
   margin-top: 51px;
 }
 
+.filter button:hover {
+  cursor: pointer;
+}
+
 .choice_pictures {
   min-height: 37px;
   max-width: 198px;
