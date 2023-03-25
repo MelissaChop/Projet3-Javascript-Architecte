@@ -106,7 +106,6 @@ displayWorks(works);
 const connexion = window.sessionStorage.getItem("User");
 const button = document.querySelector(".filter");
 
-let enTete = document.getElementById("#barre");
 if (connexion != null) {
   button.style.display = "none";
 
@@ -134,6 +133,15 @@ if (connexion != null) {
 
   const titre = document.querySelector("#introduction article h2");
   titre.style.marginTop = "5%";
+
+  //Remplacement Login par Logout
+  let log = document.querySelector(".log");
+  log.innerHTML = "logout";
+  log.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.sessionStorage.removeItem("User");
+    window.location.href = "./index.html";
+  });
 }
 
 initModal(works, categories);
