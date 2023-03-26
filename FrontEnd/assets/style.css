@@ -150,8 +150,6 @@ header {
   left: 0;
   background-color: black;
   margin: 0;
-  /* margin-left: -40.5%;
-  margin-right: -40.5%;*/
 }
 
 #enTete {
@@ -441,5 +439,3 @@ footer nav ul {
 #modifProjet .fa-pen-to-square {
   padding-right: 5%;
 }
-
-/* Modal */
