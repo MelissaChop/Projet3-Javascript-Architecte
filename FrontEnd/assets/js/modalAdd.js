@@ -74,7 +74,9 @@ export function displayForm(works, categories) {
         categoryOk = false;
 
         checkValidation();
-        messageError.innerHTML = ""; // Retait message d'erreur qui demande de correctement remplir le formulaire
+        messageError.innerHTML =
+          ""; /* Retrait message d'erreur qui demande de correctement 
+        remplir le formulaire*/
       })
       .catch((error) => {
         console.log(error);

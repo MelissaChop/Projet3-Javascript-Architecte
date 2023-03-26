@@ -10,7 +10,8 @@ export async function displayWorksD(works) {
 
   const divGalleryD = document.querySelector(".galleryModal");
 
-  // Boucle pour afficher tous les works dans un element Figure, qui contient des image et leur figcaption
+  /* Boucle pour afficher tous les works dans un element Figure, 
+  qui contient des image et leur figcaption*/
   /*Boucle dans le tableau JSON */
   for (let i = 0; i < works.length; i++) {
     /*Creation des balises HTML*/
@@ -63,13 +64,16 @@ export async function displayWorksD(works) {
 
     divGalleryD.appendChild(worksElement);
 
-    // Afficher element - Ajoutez un gestionnaire d'événements  pour l'événement mouseover sur l'élément cible ( qui ce declenche au survol d'un element)
+    /* Afficher element - Ajoutez un gestionnaire d'événements  pour l'événement mouseover 
+    sur l'élément cible ( qui ce declenche au survol d'un element)*/
     worksElement.addEventListener("mouseover", function () {
       // Affichez l'élément à afficher
       iconDiv.style.display = "block";
     });
 
-    // Cacher element - Ajoutez un gestionnaire d'événements pour l'événement mouseout sur l'élément cible ( qui ce declenche au survol d'autre element que l'element cible, en dehors de la zone)
+    /* Cacher element - Ajoutez un gestionnaire d'événements pour l'événement mouseout sur 
+    l'élément cible ( qui ce declenche au survol d'autre element que l'element cible, en 
+    dehors de la zone)*/
     worksElement.addEventListener("mouseout", function () {
       // Masquez l'élément à afficher
       iconDiv.style.display = "none";
@@ -85,9 +89,13 @@ export async function displayWorksD(works) {
     // au click sur l'element garbage
     iconeGarbage.addEventListener("click", function (event) {
       event.preventDefault();
-      let worksDel = parseInt(worksElement.dataset.id); // Permet de convertir la chaine de caractere en nombre entier. Permettra la supressin de part l'id
+      let worksDel = parseInt(
+        worksElement.dataset.id
+      ); /* Permet de convertir la chaine de caractere 
+      en nombre entier. Permettra la supression de part l'id*/
 
-      // Envoie d'une requete delete a l'API en incluant le token d'authentification pour l'autorisation
+      /* Envoie d'une requete delete a l'API en incluant le token
+       d'authentification pour l'autorisation*/
 
       fetch(`http://localhost:5678/api/works/${worksDel}`, {
         method: "DELETE",

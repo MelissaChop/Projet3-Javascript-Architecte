@@ -137,6 +137,9 @@ if (connexion != null) {
   //Remplacement Login par Logout
   let log = document.querySelector(".log");
   log.innerHTML = "logout";
+
+  /*Au click retrait de l'evenemen par default, remove du User stocké dans le session storage
+  et redirection vers la page index non connectée*/
   log.addEventListener("click", function (event) {
     event.preventDefault();
     window.sessionStorage.removeItem("User");
