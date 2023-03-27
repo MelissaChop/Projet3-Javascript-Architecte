@@ -2,7 +2,7 @@ import { initModal } from "./modal.js";
 
 let worksApi = await fetch("http://localhost:5678/api/works");
 
-/*Mettre au format JSON */
+/*Mettre au format JSON et parse */
 let works = await worksApi.json();
 
 /* Creer fonction Portfolio*/
@@ -13,7 +13,7 @@ export async function displayWorks(works) {
 
   const divGallery = document.querySelector(".gallery");
 
-  /*Boucle dans le tableau JSON */
+  /*Boucle sur le tableau de works */
   for (let i = 0; i < works.length; i++) {
     /*Creation des balises HTML*/
 
@@ -29,7 +29,7 @@ export async function displayWorks(works) {
     const titleElement = document.createElement("figcaption");
     titleElement.innerText = works[i].title;
 
-    /* Lien entre les blocs enfant et parent*/
+    /* Rajout des blocs enfant au parent*/
     worksElement.appendChild(image);
 
     worksElement.appendChild(titleElement);
@@ -42,7 +42,7 @@ export async function displayWorks(works) {
 
 const categoriesApi = await fetch(`http://localhost:5678/api/categories`);
 
-/*Mettre au format JSON */
+/*Mettre au format JSON et parse */
 const categories = await categoriesApi.json();
 
 /* Creer fonction Bouton*/
@@ -61,7 +61,7 @@ async function displayCategories(categories) {
 
   const divCategories = document.querySelector(".filter");
 
-  /*Boucle dans le tableau JSON */
+  /*Boucle sur le tableau de categories */
   for (let i = 0; i < categories.length; i++) {
     /*Creation des balises HTML*/
 
@@ -74,7 +74,7 @@ async function displayCategories(categories) {
       buttonCategories.classList.add("active");
     }
 
-    /* Lien entre les blocs enfant et parent*/
+    /*Rajout des blocs enfant au parent*/
 
     divCategories.appendChild(buttonCategories);
 

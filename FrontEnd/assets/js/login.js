@@ -23,7 +23,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
         if (reponse.status === 404) {
           let alert = document.querySelector("form");
 
-          // Affichage de message si le mail ou le mot de passe est faux
+          // Affichage des messages si le mail ou le mot de passe est faux
           let message = document.createElement("p");
           message.setAttribute("id", "toDelete");
           let locationMessage = alert.firstChild;
@@ -49,7 +49,7 @@ document.querySelector(".loginForm").onsubmit = function (event) {
     })
 
     .then((data) => {
-      // Si Mot de passe et mail est juste alors redirection vers la Galery avec l'affichage conecte
+      // Si Mot de passe et mail est juste alors redirection vers la Galery avec l'affichage connecte
       window.sessionStorage.setItem("User", JSON.stringify(data));
 
       window.location.href = "./index.html";

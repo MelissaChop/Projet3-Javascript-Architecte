@@ -76,7 +76,7 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-// Ajout des evenements au click pour ouvrie, et fermer la modal
+// Ajout des evenements au click pour ouvrir, et fermer la modale
 trigger2.addEventListener("click", toggleModal2);
 closeButton2.addEventListener("click", toggleModal2);
 window.addEventListener("click", windowOnClick2);

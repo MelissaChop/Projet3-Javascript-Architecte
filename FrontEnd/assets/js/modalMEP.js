@@ -107,6 +107,8 @@ export async function displayWorksD(works) {
           if (reponse.status === 401) {
             console.error("Impossible d'effectuer la suppression");
             window.location.href = "./login.html";
+          } else if (!reponse.ok) {
+            throw new Error("Erreur détectée!");
           }
           // Si pas erreur alors suppresion du works en fonction de l'id
           let index = works.findIndex((work) => work.id === worksDel);

@@ -36,6 +36,7 @@ function categorieAdd(categories) {
 
 //Envoie image a l'API---------------------------------------------
 
+let addPicturesForm = document.querySelector("#formModal");
 //Appel des categories et works dans le formulaire ( grace aux imports).
 export function displayForm(works, categories) {
   const token = window.sessionStorage.getItem("User");
@@ -43,7 +44,6 @@ export function displayForm(works, categories) {
   categorieAdd(categories);
 
   // Gerer la post pour les nouvelles images
-  let addPicturesForm = document.querySelector("#formModal");
   addPicturesForm.onsubmit = (e) => {
     const addImage = new FormData(addPicturesForm);
     e.preventDefault();
@@ -56,32 +56,43 @@ export function displayForm(works, categories) {
       body: addImage,
     })
       .then((reponse) => {
+        if (reponse.status === 401) {
+          console.error("Impossible d'effectuer la suppression");
+          window.location.href = "./login.html";
+        } else if (!reponse.ok) {
+          throw new Error("Erreur détectée!");
+        }
         return reponse.json();
       })
       .then((work) => {
+        console.log("Toto");
         works.push(work);
 
         displayWorksD(works);
         displayWorks(works);
-
-        /*Gestion affichage*/
-        previewOff.style.display = "flex";
-        preview.style.display = "none";
-        addPicturesForm.reset();
-
-        imgOk = false;
-        titleOk = false;
-        categoryOk = false;
-
-        checkValidation();
-        messageError.innerHTML =
-          ""; /* Retrait message d'erreur qui demande de correctement 
-        remplir le formulaire*/
+        resetEntries();
       })
       .catch((error) => {
+        resetEntries();
         console.log(error);
       });
   };
+}
+
+function resetEntries() {
+  /*Gestion affichage*/
+  previewOff.style.display = "flex";
+  preview.style.display = "none";
+  addPicturesForm.reset();
+
+  imgOk = false;
+  titleOk = false;
+  categoryOk = false;
+
+  checkValidation();
+  messageError.innerHTML = "";
+  /* Retrait message d'erreur qui demande de correctement 
+                  remplir le formulaire*/
 }
 
 //------------------------------------------------------------
@@ -126,6 +137,7 @@ function imageMinia() {
       ); /*Creer une URL de l'image, afin de recuperer sa source */
     img.onload = function () {
       img.style.display = "block";
+      preview.style.display = "block";
       preview.appendChild(img);
       previewOff.style.display = "none";
       URL.revokeObjectURL(this.src);
