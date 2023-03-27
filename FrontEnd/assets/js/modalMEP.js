@@ -12,7 +12,7 @@ export async function displayWorksD(works) {
 
   /* Boucle pour afficher tous les works dans un element Figure, 
   qui contient des image et leur figcaption*/
-  /*Boucle dans le tableau JSON */
+  /*Boucle sur le tableau de works */
   for (let i = 0; i < works.length; i++) {
     /*Creation des balises HTML*/
 

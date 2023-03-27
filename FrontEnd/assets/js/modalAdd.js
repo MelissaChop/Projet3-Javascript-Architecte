@@ -65,7 +65,6 @@ export function displayForm(works, categories) {
         return reponse.json();
       })
       .then((work) => {
-        console.log("Toto");
         works.push(work);
 
         displayWorksD(works);
@@ -114,7 +113,7 @@ const maxSize = 4 * 1024 * 1024; // Taille maximale autorisée en octets
 //Fonction pour permettre d'afficher l'image
 function imageMinia() {
   const file = this.files[0]; // recupere le fichier de l'input de type file
-  const imageType = /(jpg|jpeg|png)$/; // Contrôle si est bien une image jpg ou png
+  const imageType = /(jpg|jpeg|png)$/; // Contrôle si est bien une image jpg, jpeg ou png
   preview.innerHTML = "";
   previewOff.style.display = "block";
 
@@ -150,7 +149,7 @@ image.addEventListener("change", imageMinia);
 
 boutonValide.disabled = true;
 
-// Definir si bouton est disponible ou pa, celon si formulaire completement remplis
+// Definir si bouton est disponible ou pas, celon si formulaire completement remplis
 function checkValidation() {
   if (imgOk && titleOk && categoryOk) {
     boutonValide.disabled = false;
@@ -159,7 +158,7 @@ function checkValidation() {
     boutonValide.disabled = true;
     messageError.innerHTML =
       "<p>Merci de remplir tous les paramètres avant de valider</p>";
-    // Message d'erreur tant qu ele formulaire n'est pas correctement remplis
+    // Message d'erreur tant que le formulaire n'est pas correctement remplis
   }
 }
 
