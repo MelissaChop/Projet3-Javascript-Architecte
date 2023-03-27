@@ -104,6 +104,7 @@ let [image, preview, previewOff, icone, img] = [
   document.querySelector("#fondImage"),
   document.querySelector(".imagePreview"),
 ];
+preview.style.display = "none";
 
 img.style.display =
   "none"; /* On cache en premier la partie où doit s'afficher l'image */
@@ -116,10 +117,12 @@ function imageMinia() {
   const imageType = /(jpg|jpeg|png)$/; // Contrôle si est bien une image jpg, jpeg ou png
   preview.innerHTML = "";
   previewOff.style.display = "block";
+  img.style.display = "block";
 
   // gestion de la taille maximum
   if (file.size > maxSize) {
     icone.style.display = "none";
+    preview.style.display = "block";
     preview.innerHTML = "<p>Image supérieure à 4 Mo !</p>";
     return false;
   }
@@ -127,6 +130,7 @@ function imageMinia() {
   // Gestion du type d'image
   if (!imageType.test(file.type)) {
     icone.style.display = "none";
+    preview.style.display = "block";
     preview.innerHTML = "<p>Attention : JPG ou PNG !</p>";
     return false;
   } else {
